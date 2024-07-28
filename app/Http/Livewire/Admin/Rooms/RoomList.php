@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Properties;
+namespace App\Http\Livewire\Admin\Rooms;
 
 use Livewire\Component;
 use App\Property;
 use Livewire\WithPagination;
-class PropertyList extends Component
+class RoomList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -13,19 +13,17 @@ class PropertyList extends Component
     public $search = '';
     public $isCreate = 0;
     public $isEdit = 0;
-    public $isList = 1;
     
     public function render()
     {
         if(!$this->data_length){
-            $properties = Property::where('type',"apartment")->where('number', 'like', '%'.$this->search.'%')->paginate(10);
-       }else{
-           $properties = Property::where('type',"apartment")->where('number', 'like', '%'.$this->search.'%')->paginate($this->data_length);
-       }
-       return view('livewire.admin.properties.property-list', ['properties' => $properties]);
+            $properties = Property::where('type',"room")->where('number', 'like', '%'.$this->search.'%')->paginate(10);
+        }else{
+           $properties = Property::where('type',"room")->where('number', 'like', '%'.$this->search.'%')->paginate($this->data_length);
+        }
+       return view('livewire.admin.rooms.room-list', ['properties' => $properties]);
        
     }
-   
     public function store()
     {
         $this->validateCreate();
@@ -69,7 +67,6 @@ class PropertyList extends Component
 
 
         $this->isEdit = true;
-        $this->isList = false;
         $this->isDeleted = false;
     }
 
@@ -139,14 +136,12 @@ class PropertyList extends Component
     public function openCreate()
     {
         $this->isCreate = true;
-        $this->isList = false;
     }
 
     public function closeCreateOredit()
     {
         $this->isCreate = false;
         $this->isEdit = false;
-        $this->isList = true;
     }
     private function resetInputFields()
     {

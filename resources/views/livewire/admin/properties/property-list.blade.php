@@ -16,7 +16,8 @@
                 @can('property-create')
                 <div class="col-md-12 col-12">
                     <div class="dropdown float-md-right">
-                        <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a>
+                        <!-- <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a> -->
+                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة وحدة</button>
                     </div>
                 </div>
                 @endcan

@@ -16,9 +16,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     Route::resource('properties','PropertyController');
-    // Route::get('/properties', function () {
-    //     return view('livewire.admin.properties.index');
-    // });
+    Route::get('rooms', 'PropertyController@rooms');
+    Route::post('store-room', 'PropertyController@storeRoom')->name('store-room');
+    
     Route::resource('clients','ClientController'); 
     Route::get('property/clients/{id}', 'ClientController@propertyClients');
     Route::get('clients/print/{id}', 'ClientController@print')->name('clients.print');
