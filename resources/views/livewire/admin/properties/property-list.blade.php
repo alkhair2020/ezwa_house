@@ -16,7 +16,7 @@
                 @can('property-create')
                 <div class="col-md-12 col-12">
                     <div class="dropdown float-md-right">
-                        <a href="#" wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a>
+                        <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a>
                     </div>
                 </div>
                 @endcan
@@ -108,7 +108,7 @@
                                                 </a>
                                                 @endcan
                                                 @can('property-edit')
-                                                <a class="btn btn-sm bg-success-light"  href="#" wire:click="edit({{ $property->id }})">
+                                                <a class="btn btn-sm bg-success-light" wire:click="edit({{ $property->id }})">
                                                     <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                         class="la la-edit"></i></button>
                                                 </a>

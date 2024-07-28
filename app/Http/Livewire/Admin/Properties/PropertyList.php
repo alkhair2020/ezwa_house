@@ -14,16 +14,18 @@ class PropertyList extends Component
     public $isCreate = 0;
     public $isEdit = 0;
     public $isList = 1;
+    
     public function render()
     {
         if(!$this->data_length){
-            $properties = Property::where('address', 'like', '%'.$this->search.'%')->paginate(10);
+            $properties = Property::where('number', 'like', '%'.$this->search.'%')->paginate(10);
        }else{
-           $properties = Property::where('address', 'like', '%'.$this->search.'%')->paginate($this->data_length);
+           $properties = Property::where('number', 'like', '%'.$this->search.'%')->paginate($this->data_length);
        }
        return view('livewire.admin.properties.property-list', ['properties' => $properties]);
        
     }
+   
     public function store()
     {
         $this->validateCreate();
