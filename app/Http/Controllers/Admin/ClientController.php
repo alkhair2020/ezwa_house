@@ -184,18 +184,22 @@ class ClientController extends Controller
         $add->save();
 
         $datenow=Carbon::now()->format('Y-m-d');
-        $add_receipt = new Receipt;
-        $add_receipt->user_id     = $user_id->id;
-        $add_receipt->client_id     = $add->id;
-        $add_receipt->amount    = $request->insurance;
-        $add_receipt->date    = $datenow;
-        $add_receipt->save();
+        if(!empty($request->insurance)){
+            $add_receipt = new Receipt;
+            $add_receipt->user_id     = $user_id->id;
+            $add_receipt->client_id     = $add->id;
+            $add_receipt->amount    = $request->insurance;
+            $add_receipt->date    = $datenow;
+            $add_receipt->save();
+        }
 
         $add_report = new Report;
         $add_report->user_id     = $user_id->id;
         $add_report->property_id     = $request->property_id;
         $add_report->client_id     = $add->id;
-        $add_report->receipt_id    = $add_receipt->id;
+        if(!empty($request->insurance)){
+            $add_report->receipt_id    = $add_receipt->id;
+        }
         $add_report->payment_way    = $request->payment_way;
         $add_report->save();
         
@@ -313,37 +317,70 @@ class ClientController extends Controller
    
     public function update(Request $request, Client $client)
     {
+        $user_id=Auth::user();
         $property = Property::where('id',$request->property_id)->first();
         $edit = Client::findOrFail($client->id);
-        // $edit->user_id     = $user_id->id;
+
+    
+        
+        $edit->user_id     = $user_id->id;
         $edit->property_id     = $request->property_id;
         $edit->name    = $request->name;
         $edit->type    = $request->type;
         $edit->nationality    = $request->nationality;
+        
         $edit->tax_number    = $request->tax_number;
         $edit->id_number    = $request->id_number;
         $edit->phone    = $request->phone;
         $edit->number_companions    = $request->number_companions;
-        
-        $edit->property_id    = $request->property_id;
-        $edit->start_date    = $request->start_date;
-        $edit->end_date    = $request->end_date;
+        $edit->count_day    = $request->count_day;
+        // $edit->start_date    = $request->start_date;
+        // $edit->time    =$end_date->format('h:i A');
+        // $edit->end_date    = $end_date->format('Y-m-d');
         $edit->property_type    = $request->property_type;
         if(isset( $request->discount)){
             $edit->discount    = $request->discount;
         }
-        if($request->property_price){
-            $edit->property_price = $request->property_price;
+        
+        if($request->property_type=='weekly'){
+            $price_whith_percent= $property->price_week + ($property->price_week * $property->percentage) / 100;
+            $edit->property_price    = $price_whith_percent * $request->count_day ;
+            $edit->total    = $price_whith_percent * $request->count_day - $request->discount;
+        }elseif($request->property_type=='daily'){
+            $price_whith_percent= $property->price_day + ($property->price_day * $property->percentage) / 100;
+            $edit->property_price    = $price_whith_percent * $request->count_day;
+            $edit->total    = $price_whith_percent * $request->count_day - $request->discount;
+        }else{
+            $price_whith_percent= $property->price_month + ($property->price_month * $property->percentage) / 100;
+            $edit->property_price    =$price_whith_percent;
+            $edit->total    =$price_whith_percent - $request->discount;
         }
-        // if(isset( $request->draft)){
-        //     $edit->draft    = $request->draft;
-        // }
-        $edit->total    = $request->property_price - $request->discount;
         $edit->save();
 
-        $receipt = Receipt::where('client_id',$client->id)->first();
-        $receipt->amount    = $request->insurance;
-        $receipt->save();
+        $datenow=Carbon::now()->format('Y-m-d');
+        if(!empty($request->insurance)){
+            $receipt = Receipt::where('client_id',$client->id)->first();
+            if($receipt){
+                $receipt->amount    = $request->insurance;
+                $receipt->save();
+            }else{
+                $add_receipt = new Receipt;
+                $add_receipt->user_id     = $user_id->id;
+                $add_receipt->client_id     = $edit->id;
+                $add_receipt->amount    = $request->insurance;
+                $add_receipt->date    = $datenow;
+                $add_receipt->save();
+            }
+        }
+        $edit_report = Report::where('client_id',$client->id)->first();
+        if($edit_report){
+            if(!empty($request->insurance)){
+                if(!$edit_report->receipt_id){
+                    $edit_report->receipt_id    = $add_receipt->id;
+                    $edit_report->save();
+                }
+            }
+        }
         return redirect()->route('clients.index')->with("message", 'تم التعديل بنجاح');
     }
 

@@ -82,7 +82,11 @@
                                     <td>{{$client->discount}}</td>
                                     <td>{{$client->total}}</td>
                                     <td>
-                                        {{$client->receipts->amount}}
+                                        @if($client->receipts)
+                                            {{$client->receipts->amount}}
+                                        @else
+                                            0
+                                        @endif
                                     </td>
                                     <td>
                                         @if($client->status==1)
@@ -105,20 +109,21 @@
                                         @endcan
 
                                         @can('receipt-print')
-                                            @if($client->status ==1)
-                                                @if($client->receipts)
-                                                <a class="btn btn-sm bg-success-light"
-                                                    href="{{ url('admin/receipts/print', $client->receipts->id) }}">
-                                                    <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
-                                                </a>
-                                                @endif
-                                            @else
-                                                @if($client->receipts)
+                                            @if($client->receipts)
+                                                @if($client->status ==1)
                                                     <a class="btn btn-sm bg-success-light"
-                                                        href="#">
+                                                        href="{{ url('admin/receipts/print', $client->receipts->id) }}">
+                                                        <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
+                                                    </a>
+                                                @else
+                                                   <a class="btn btn-sm bg-success-light"href="#">
                                                         <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
                                                     </a>
                                                 @endif
+                                            @else
+                                                <a class="btn btn-sm bg-success-light" data-toggle="modal" data-catid="{{ $client->id }}"  data-target="#create_receipts">
+                                                    <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
+                                                </a>
                                             @endif
                                         @endcan
 
@@ -139,7 +144,7 @@
                                         </a>
                                         @else
                                         <a class="btn btn-sm bg-success-light" data-toggle="modal"
-                                            data-catid="{{ $client->id }}" data-insuranceid="{{ $client->receipts->amount }}"
+                                            data-catid="{{ $client->id }}" data-insuranceid="{{ $client->receipts ? $client->receipts->amount : 0 }}"
                                             data-target="#create_expenses">
                                             <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
                                             <button type="button" class="btn btn-icon btn-light mr-1" style="background: #DADADA;">
@@ -239,6 +244,38 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block"
                             onclick="return Validateallinput()">حفظ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="create_receipts" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">اضافة تأمين</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('receipts.store')}}" method="POST" name="le_form"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="client_id" id="cat_id">
+                        <div class="row form-row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    <label> المبلغ</label>
+                                    <input type="text" name="amount" class="form-control" id="amount_id">
+                                    <!-- <input type="hidden" name="insurance" id="insurance_id"> -->
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"
+                            >حفظ</button>
                     </form>
                 </div>
             </div>
@@ -359,7 +396,13 @@
 </section>
 <script src="{{asset('js/app.js')}}"></script>
 <script>
+    $('#create_receipts').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
 
+        var cat_id = button.data('catid')
+        var modal = $(this)
+        modal.find('.modal-body #cat_id').val(cat_id);
+    })
     $('#client_renew').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
 

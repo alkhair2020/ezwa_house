@@ -228,7 +228,12 @@
                   <span class="text-muted"> </span>{{$clients->discount}}
                 </p> -->
                 <p>
-                  <span class="text-muted"></span>{{$clients->receipts->amount}}
+                  <span class="text-muted"></span>
+                  @if($clients->receipts)
+                    {{$clients->receipts->amount}}
+                  @else
+                    0
+                  @endif
                 </p>
               </div>
              
@@ -335,7 +340,13 @@
                 </p>
                 <p class="">1- يتم دفع قيمة الإيجار مقدماً.
                 </p>
-                <p>2-على المستأجر دفع مبلغ {{$clients->receipts->amount}} ريال كتأمين مسترجع و سيخصم منه في حالة حصول أي تلفيات في محتويات الشقة
+                <p>2-على المستأجر دفع مبلغ 
+                  @if($clients->receipts)
+                    {{$clients->receipts->amount}}
+                  @else
+                    0
+                  @endif
+                  ريال كتأمين مسترجع و سيخصم منه في حالة حصول أي تلفيات في محتويات الشقة
                   من قبل العميل أو مرافقيه </span>
                 </p>
                 <p>3- يجب الإفصاح عن جميع ساكني الشقة الذين يندرجون تحت رب الاسرة وفى حالة التستر على احد الأسماء

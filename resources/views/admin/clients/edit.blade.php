@@ -122,9 +122,9 @@
 
                                 <h4 class="form-section"><i class="la la-paperclip"></i> بيانات العقد</h4>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput5">العقار / الشقة</label>
+                                            <label for="projectinput5">الوحدة</label>
                                             <select name="property_id" class="form-control" id="propertyId">
                                                 <option value="" selected="" disabled="">اختر العقار</option>
                                                 @foreach ($properties as $property)
@@ -134,72 +134,78 @@
                                             <span id="property_idError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="issueinput3">بداية العقد</label>
-                                            <input type="date" name="start_date" id="start_dateId" class="form-control"
-                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
-                                                data-title="Date Opened" value="{{$client->start_date}}">
-                                            <span id="start_dateError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="issueinput4">نهاية العقد</label>
-                                            <input type="date" name="end_date" id="end_dateId" class="form-control"
-                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
-                                                data-title="Date Fixed" value="{{$client->end_date}}">
-                                            <span id="end_dateError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">نوع الإجار</label>
                                             <select name="property_type" class="form-control" id="property_typeId">
                                                 <option value="" selected="" disabled="">اختر نوع الإجار</option>
-                                                <option value="monthly" {{ $client->property_type == 'monthly' ? "selected" : "" }}>شهري</option>
-                                                <option value="weekly" {{ $client->property_type == 'weekly' ? "selected" : "" }}>اسبوعي</option>
+                                                <option value="monthly"  {{ $client->property_type == 'monthly' ? "selected" : "" }}>شهري</option>
+                                                <option value="weekly"  {{ $client->property_type == 'weekly' ? "selected" : "" }}>اسبوعي</option>
+                                                <option value="daily"  {{ $client->property_type == 'daily' ? "selected" : "" }}>يومي</option>
                                             </select>
                                             <span id="property_typeError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput1">السعر</label>
-                                            <input type="number" name="property_price" id="propertyPriceId" class="form-control"
-                                                placeholder="السعر" value="{{$client->property_price}}">
-                                            <span id="propertyPriceError" class="error-message"></span>
+                                            <label for="projectinput5">عدد (كم يوم  / كم اسبوع / كم شهر ) </label>
+                                            <input type="number" name="count_day" id="count_dayId" class="form-control" value="{{$client->count_day}}"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                                data-title="Date Fixed">
+                                            <span id="count_dayError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
+                                            <label for="projectinput5">طريقة الدفع</label>
+                                            <select name="payment_way" class="form-control" id="payment_wayId">
+                                                <option value="" selected="" disabled="">اختر طريقة الدفع</option>
+                                                <option value="bank transfer" {{ $client->payment_way == 'bank transfer' ? "selected" : "" }}>تحويل بنكي</option>
+                                                <option value="network" {{ $client->payment_way == 'network' ? "selected" : "" }}>شبكة</option>
+                                                <option value="cash" {{ $client->payment_way == 'cash' ? "selected" : "" }}>نقدي</option>
+                                            </select>
+                                            <span id="payment_wayError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="issueinput3">بداية تاريخ العقد</label>
+                                            <input type="date" name="start_date" id="start_dateId" class="form-control" value="{{$client->start_date}}" readonly
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                                data-title="Date Opened">
+                                            <span id="start_dateError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="issueinput3"> الوقت للعقد   </label>
+                                            <input type="text" name="time" id="timeId" class="form-control" readonly value="{{$client->time}}"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                                data-title="Date Opened">
+                                            <span id="timeError" class="error-message"></span>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label for="projectinput1">الخصم</label>
-                                            <input type="number" name="discount" id="discountId" class="form-control" 
-                                                placeholder="الخصم" name="fname" value="{{$client->discount}}">
+                                            <input type="number" name="discount" id="discountId" class="form-control" value="{{$client->discount}}"
+                                                placeholder="الخصم" name="fname">
                                             <span id="discountError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">التأمين</label>
-                                            <input type="number" name="insurance" id="insuranceId" class="form-control"
-                                                placeholder="التأمين" value="{{$client->receipts->amount}}">
+                                            <input type="number" name="insurance" id="insuranceId" class="form-control" value="{{$client->receipts ? $client->receipts->amount : ''}}"
+                                                placeholder="التأمين">
                                             <span id="insuranceError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-4"> 
-                                        <div class="form-group">
-                                            <label for="projectinput1">التكلفة النهائية (اجمالي التكلفة بعد الخصم إذا وجد)</label>
-                                            <input type="number" name="total" id="totalId" class="form-control" disabled
-                                                placeholder="">
-                                            <span id="draftError" class="error-message"></span>
-                                        </div>
-                                    </div> -->
-
-
                                 </div>
+                               
+                              
                                 <!-- <div class="form-group">
                             <label for="companyName">Company</label>
                             <input type="text" id="companyName" class="form-control" placeholder="Company Name"

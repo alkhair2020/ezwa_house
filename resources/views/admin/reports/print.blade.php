@@ -159,7 +159,14 @@
                                         <td><p>@if($report->users){{$report->users->name}}@endif  {{$report->id}}</p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
                                         <td><p>@if($report->clients){{$report->clients->id}}@endif </p></td>
-                                        <td><p> @if($report->clients) {{$report->clients->start_date}}@endif </p></td>
+                                        <td><p> 
+                                            @if($report->clients)  
+                                                @if($report->status==0)
+                                                    {{ $report->created_at->format('Y-m-d') }}
+                                                @else
+                                                    {{$report->clients->start_date}}
+                                                @endif
+                                            @endif </p></td>
                                         <td><p>@if($report->clients){{$report->clients->name}}@endif</p></td>
                                         <td >
                                             @if($report->status==1)

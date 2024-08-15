@@ -6,10 +6,12 @@ use App\Client;
 use App\Property;
 use App\User;
 use App\Receipt;
+use App\Report;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon as Carbon;
 class ReceiptController extends Controller
 {  
     public function index()
@@ -38,15 +40,34 @@ class ReceiptController extends Controller
     {
         $user_id=Auth::user();
        
-        $property = Client::where('id',$request->client_id)->first();
-        $add = new Receipt;
-        $add->user_id     = $user_id->id;
-        $add->client_id     = $request->client_id;
-        $add->amount    = $request->amount;
-        $add->date    = $request->date;
-        
-       
-        $add->save();
+        $client = Client::where('id',$request->client_id)->first();
+
+        $datenow=Carbon::now()->format('Y-m-d');
+        if(!empty($request->amount)){
+            $add_receipt = new Receipt;
+            $add_receipt->user_id     = $user_id->id;
+            $add_receipt->client_id     = $client->id;
+            $add_receipt->amount    = $request->amount;
+            $add_receipt->date    = $datenow;
+            $add_receipt->save();
+        }
+
+        $edit_report = Report::where('client_id',$client->id)->first();
+        if($edit_report){
+            if(!empty($request->amount)){
+                if(!$edit_report->receipt_id){
+                    $edit_report->receipt_id    = $add_receipt->id;
+                    $edit_report->save();
+                }
+            }
+        }
+
+        // $add = new Receipt;
+        // $add->user_id     = $user_id->id;
+        // $add->client_id     = $request->client_id;
+        // $add->amount    = $request->amount;
+        // $add->date    = $request->date;
+        // $add->save();
         return redirect()->back()->with("message", 'تم الإضافة بنجاح');
     }
 
