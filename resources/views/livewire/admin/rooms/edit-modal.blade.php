@@ -1,6 +1,6 @@
 
 
-<div class="modal fade" id="edit{{$property->id}}" aria-hidden="true" role="dialog">
+<div wire:ignore.self class="modal fade" id="edit" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
         <div class="modal-content">
         <div class="modal-header">

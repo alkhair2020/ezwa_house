@@ -15,6 +15,7 @@ use App\Helpers\DateHelper;
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'], function () {        
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::resource('prices','PriceController');
     Route::resource('properties','PropertyController');
     Route::get('rooms', 'PropertyController@rooms');
     Route::post('store-room', 'PropertyController@storeRoom')->name('store-room');

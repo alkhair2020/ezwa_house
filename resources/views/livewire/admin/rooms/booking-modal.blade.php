@@ -1,9 +1,12 @@
-<!-- Add Modal -->
-<div class="modal fade" id="booking_room" aria-hidden="true" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
-        <div class="modal-content">
+<!-- booking Modal -->
+<div wire:ignore.self class="modal fade " id="booking_room" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-middle " role="document" >
+        <div class="modal-content {{ $isClient ? 'inactive shadow' : '' }}">
             <div class="modal-header">
-                <h5 class="modal-title">اضافة غرفة</h5>
+                <h5 class="modal-title">إضافة حجز 
+                    
+                        {{$total}}
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,213 +15,241 @@
                 <form action="{{route('store-room')}}" method="POST" 
                     name="le_form"  enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="form-body col-md-6"  >
-                            <div class="" style="    border: 1px solid #e7e5e5;">
-                                <h4 class="m-1" style="border-right: 2px solid #1bc6fe !important;border-top: 2px solid #1bc6fe;    padding: 4px;">المعلومات الاساسية</h4>
-                                <div class="row m-1">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput1">رقم الغرفة</label>
-                                            <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الغرفة"
-                                            name="fname">
-                                            <span id="numberError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput1">الطابق</label>
-                                            <input type="number" name="floor" id="numberId" class="form-control" placeholder="اكتب رقم الطابق"
-                                            name="fname">
-                                            <span id="numberError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput1">عدد الغرف</label>
-                                            <input type="number" name="rooms" id="roomsId" class="form-control" placeholder="اكتب عدد الغرف"
-                                            name="fname">
-                                            <span id="roomsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4"> عدد دورات المياة</label>
-                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder=" عدد الحمامات" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4">عدد الأسٍرة المفردة</label>
-                                            <input type="number" name="num_single_bed" id="bathsId" class="form-control" placeholder="عدد الأسٍرة المفردة" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4">عدد الأسٍرة المزدوجة</label>
-                                            <input type="number" name="num_double_bed" id="bathsId" class="form-control" placeholder="عدد الأسٍرة المزدوجة" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4">عدد الخزائن</label>
-                                            <input type="number" name="num_locker" id="bathsId" class="form-control" placeholder="عدد الخزائن" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4">عدد التلفزيونات</label>
-                                            <input type="number" name="num_TVs" id="bathsId" class="form-control" placeholder="عدد التلفزيونات" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4">نوع المكيف</label>
-                                            <input type="number" name="conditioner_type" id="bathsId" class="form-control" placeholder="نوع المكيف" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="projectinput4">نوع الغرفة</label>
-                                            <input type="number" name="price_id" id="bathsId" class="form-control" placeholder="" >
-                                            <span id="bathsError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    
+                    <div class="row m-01 p-05" style="    border: 1px solid #e7e5e5;">
+                        <div class="col-md-12 head-title" > 
+                            <h5 class="p-05"> فترة الحجز </h5>
+                        </div>        
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="projectinput5"> الإجار</label>
+                                <select name="property_type" class="form-booking-control" id="property_typeId" disabled>
+                                    <option value="daily" selected>يومي</option>
+                                    <option value="monthly">شهري</option>
+                                    <option value="weekly">اسبوعي</option>
+                                </select>
+                                <span id="property_typeError" class="error-message"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="issueinput3">من</label>
+                                <input type="date" name="start_date" wire:model="start_date" id="start_dateId" class="form-booking-control"
+                                    data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                    data-title="تاريخ الدخول">
+                                <span id="start_dateError" class="error-message"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="issueinput3">الى</label>
+                                <input type="date" name="start_date" wire:model="end_date" id="start_dateId" class="form-booking-control"
+                                    data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                    data-title="تاريخ الخروج">
+                                <span id="start_dateError" class="error-message"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="projectinput5">الايام</label>
+                            <input type="number" name="count_day" wire:model="count_day"  min="1"  id="count_dayId" class="form-booking-control" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                            <span id="count_dayError" class="error-message"></span>
+                        </div>
+                    </div>
+                  
+                    <div class="row m-01 p-05" style="    border: 1px solid #e7e5e5;">
+                        <div class="col-md-12 head-title" > 
+                            <h5 class="p-01">الشقة / العميل</h5>
+                        </div>        
+                        <div class="col-md-4">
+                            <div class=" row">
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">رقم الغرفة</label>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">204</label>
+                            </div>
+                            <div class=" row">
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">السعر</label>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">280</label>
+                            </div>
+                            <div class=" row">
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">سعر الذروة</label>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">--------</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class=" row">
+                                <label class="col-md-3 col-sm-4 col-4 label-control" for="eventRegInput1">العميل</label>
+                                <label class="col-md-3 col-sm-4 col-4 label-control" for="eventRegInput1">---------</label>
+                                <div class="col-md-4 col-sm-4 col-4">
+                                <!-- <a data-toggle="modal" href="#myModal2" class="btn btn-primary" wire:click="create()">Launch modallllf</a> -->
+                                    <a data-backdrop="static" data-toggle="modal" data-target="#add_client" wire:click="addClient()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <label class="col-md-3 col-sm-4 col-4 label-control" for="eventRegInput1">الشركة</label>
+                                <label class="col-md-3 col-sm-4 col-4 label-control" for="eventRegInput1">---------</label>
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <a data-backdrop="false" data-toggle="modal" data-target="#Add_item" wire:click="create()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class=" row ">
+                                <label class="col-md-3 col-sm-4 col-4 label-control" for="eventRegInput1">المرافقون</label>
+                                <input type="text" id="eventRegInput1" class="form-booking-control col-md-3 col-sm-4 col-4" placeholder="name" name="fullname">
+                                <div class="col-md-4 col-sm-4 col-4 ">
+                                    <a data-backdrop="false" data-toggle="modal" data-target="#Add_item" wire:click="create()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <div class="row mt-1">
+                                <label class="col-md-3 col-sm-4 col-4 label-control" for="eventRegInput1">  سبب الزيارة</label>
+                                <input type="text" id="eventRegInput1" class="form-booking-control col-md-3 col-sm-4 col-4" placeholder="name" name="fullname">
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="row m-01 p-05" style="    border: 1px solid #e7e5e5;">
+                        <div class="col-md-12 head-title" > 
+                            <h5 class="p-01">المالية</h5>
+                        </div>        
+                        <div class="col-md-5">
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-5 col-4 label-control" for="eventRegInput1">المقبوضات</label>
+                                <select name="property_type" class="form-booking-control col-md-7 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                    <option value="daily" selected>يومي</option>
+                                    <option value="monthly">شهري</option>
+                                    <option value="weekly">اسبوعي</option>
+                                </select>
+                                <!-- <input type="number" name="count_day" wire:model="count_day"  min="1"  id="count_dayId" class="form-booking-control col-md-6 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام"> -->
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-4 col-4 label-control" for="eventRegInput1">بدل إيجار</label>
+                                <select name="property_type" class="form-booking-control col-md-7 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                    <option value="daily" selected>يومي</option>
+                                    <option value="monthly">شهري</option>
+                                    <option value="weekly">اسبوعي</option>
+                                </select>
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-4 col-4 label-control" for="eventRegInput1"> الفواتير</label>
+                                <select name="property_type" class="form-booking-control col-md-7 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                    <option value="daily" selected>يومي</option>
+                                    <option value="monthly">شهري</option>
+                                    <option value="weekly">اسبوعي</option>
+                                </select>
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-4 col-4 label-control" for="eventRegInput1"> الخدمات</label>
+                                <select name="property_type" class="form-booking-control col-md-7 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                    <option value="daily" selected>يومي</option>
+                                    <option value="monthly">شهري</option>
+                                    <option value="weekly">اسبوعي</option>
+                                </select>
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-4 col-4 label-control" for="eventRegInput1"> الايجار اليومي</label>
+                                <input type="number" name="count_day" wire:model="count_day"  min="1"  id="count_dayId" class="form-booking-control col-md-2 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                <label class="col-md-2 col-sm-4 col-4 label-control" for="eventRegInput1">تغيير</label>
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-4 col-4 label-control" for="eventRegInput1"> نوع الخصم</label>
+                                <select name="property_type" class="form-booking-control col-md-7 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                    <option value="daily" selected>يومي</option>
+                                    <option value="monthly">شهري</option>
+                                    <option value="weekly">اسبوعي</option>
+                                </select>
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-5 col-sm-4 col-4 label-control" for="eventRegInput1"> مبلغ الخصم</label>
+                                <input type="number" name="count_day" wire:model="count_day"  min="1"  id="count_dayId" class="form-booking-control col-md-2 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                &nbsp;
+                                <input type="number" name="count_day" wire:model="count_day"  min="1"  id="count_dayId" class="form-booking-control col-md-2 col-sm-4 col-4l" data-toggle="tooltip" data-trigger="hover" data-placement="top"data-title="عدد الايام">
+                                <label class="col-md-2 col-sm-4 col-4 label-control" for="eventRegInput1">تغيير</label>
+                                <span id="count_dayError" class="error-message"></span>
+                            </div>
+                            <div class="row m-03">
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">الضرائب</label>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">21.23</label>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row mt-05">
+                                <div class="col-md-1 col-sm-4 col-4">
+                                    <a data-backdrop="false" data-toggle="modal" data-target="#Add_item" wire:click="create()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row mt-05">
+                                <div class="col-md-1 col-sm-4 col-4">
+                                    <a data-backdrop="false" data-toggle="modal" data-target="#Add_item" wire:click="create()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row mt-05">
+                                <div class="col-md-1 col-sm-4 col-4">
+                                    <a data-backdrop="false" data-toggle="modal" data-target="#Add_item" wire:click="create()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row mt-05">
+                                <div class="col-md-1 col-sm-4 col-4">
+                                    <a data-backdrop="false" data-toggle="modal" data-target="#Add_item" wire:click="create()">
+                                        <i class="la la-plus-circle" style="color: #666EE8;font-size: 27px;"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-body col-md-6">
-                            <div class="" style="    border: 1px solid #e7e5e5;">
-                            <h4 class="m-1" style="border-right: 2px solid #1bc6fe !important;border-top: 2px solid #1bc6fe;    padding: 4px;"> المميزات العامة</h4>
-                                <div class="row m-1">
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="internet" id="radio1">
-                                                    <label for="radio1"> انترنت</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="parking" id="radio1">
-                                                    <label for="radio1">مواقف سيارات</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="elevator" id="radio1">
-                                                    <label for=""> مصعد</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="cleaning_rooms" id="radio1">
-                                                    <label for=""> تنظيف غرف</label>
-                                                </div>
-                                    </div>
-                                    
-                                </div>
-                            </div><br>
-                            <div class="" style="    border: 1px solid #e7e5e5;">
-                            <h4 class="m-1" style="border-right: 2px solid #1bc6fe !important;border-top: 2px solid #1bc6fe;    padding: 4px;"> المميزات الخاصة</h4>
-                                <div class="row m-1">
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="telephone_directory" id="radio1">
-                                                    <label for="radio1">دليل الهاتف</label>
-                                                </div>
-                                       
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="oven" id="radio1">
-                                                    <label for="radio1">فرن</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="newspaper" id="radio1">
-                                                    <label for="radio1">الصحيفة</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="microwave" id="radio1">
-                                                    <label for="radio1">مايكرويف</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="qibla" id="radio1">
-                                                    <label for="radio1">تحديد القبلة</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="washing_machine" id="radio1">
-                                                    <label for="radio1">غسالة</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="list_restaurant" id="radio1">
-                                                    <label for="radio1">قائمة المطاعم</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="iron" id="radio1">
-                                                    <label for="radio1"> مكواة</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="fridge" id="radio1">
-                                                    <label for="radio1"> ثلاجة</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="dining_table" id="radio1">
-                                                    <label for="radio1"> طاولة طعام</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="lounge" id="radio1">
-                                                    <label for="radio1"> صالة</label>
-                                                </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                                <div class="skin skin-square">
-                                                    <input type="checkbox" value="1" name="kitchen" id="radio1">
-                                                    <label for="radio1"> مطبخ</label>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div><br>
-                            <div class="" style="    border: 1px solid #e7e5e5;">
-                                <h4 class=" m-1" style="border-right: 2px solid #1bc6fe !important;border-top: 2px solid #1bc6fe;    padding: 4px;">ملاحظات</h4>
-                                <div class="row m-1 ">
-                                    <div class="col-md-12">
-                                            <textarea id="descriptionId" rows="1" class="form-control" name="description" placeholder=""></textarea>
-                                            <span id="descriptionError" class="error-message"></span>
-                                        
-                                    </div>
-                                </div>
+                        <div class="col-md-4 mt-05">
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1"> المقبوض</h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">0</label>
+                            </div>
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">بدل الإيجار</h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">0</label>
+                            </div>
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">التأمين</h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">0</label>
+                            </div>
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">التكلفة الكلية</h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">118.77</label>
+                            </div>
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">التكلفة بعد الخصم</h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">118.77</label>
+                            </div>
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">التكلفة النهائية</h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">118.77</label>
+                            </div>
+                            <div class=" row">
+                                <h5 class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">الرصيد  </h5>
+                                <label class="col-md-6 col-sm-4 col-4 label-control" for="eventRegInput1">{{$total}}</label>
                             </div>
                         </div>
-                    </div><br>
-                    <button type="submit" class=" btn btn-primary float-right"> حفظ </button>
+                    </div>
+                    <br>
+                    <div class="form-actions">
+                    <button type="button" class="btn btn-warning mr-1 " wire:click="closeCreateOredit()" data-dismiss="modal">
+                            <i class="ft-x"></i> قفل
+                        </button>
+                        <input type="submit" class="btn btn-primary" wire:click.prevent="store()" value="حفظ"  />
+                    </div>
+                    <!-- <button type="submit" class=" btn btn-primary float-right"> حفظ </button> -->
                 </form>
             </div>
         </div>
     </div>
 </div>
-    <!-- /ADD Modal -->
