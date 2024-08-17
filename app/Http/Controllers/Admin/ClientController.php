@@ -371,6 +371,11 @@ class ClientController extends Controller
                 $add_receipt->date    = $datenow;
                 $add_receipt->save();
             }
+        }else{
+            $receipt = Receipt::where('client_id',$client->id)->first();
+            if($receipt){
+                $receipt->delete();
+            }
         }
         $edit_report = Report::where('client_id',$client->id)->first();
         if($edit_report){
@@ -379,6 +384,9 @@ class ClientController extends Controller
                     $edit_report->receipt_id    = $add_receipt->id;
                     $edit_report->save();
                 }
+            }else{
+                $edit_report->receipt_id    = null;
+                $edit_report->save();
             }
         }
         return redirect()->route('clients.index')->with("message", 'تم التعديل بنجاح');
