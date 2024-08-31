@@ -157,12 +157,12 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput5">طريقة الدفع</label>
+                                            <label for="projectinput5">طريقة الدفع  {{ $client->payment_way}}</label>
                                             <select name="payment_way" class="form-control" id="payment_wayId">
                                                 <option value="" selected="" disabled="">اختر طريقة الدفع</option>
-                                                <option value="bank transfer" {{ $client->payment_way == 'bank transfer' ? "selected" : "" }}>تحويل بنكي</option>
-                                                <option value="network" {{ $client->payment_way == 'network' ? "selected" : "" }}>شبكة</option>
-                                                <option value="cash" {{ $client->payment_way == 'cash' ? "selected" : "" }}>نقدي</option>
+                                                <option value="bank transfer" {{ $report->payment_way == 'bank transfer' ? "selected" : "" }}>تحويل بنكي</option>
+                                                <option value="network" {{ $report->payment_way == 'network' ? "selected" : "" }}>شبكة</option>
+                                                <option value="cash" {{ $report->payment_way == 'cash' ? "selected" : "" }}>نقدي</option>
                                             </select>
                                             <span id="payment_wayError" class="error-message"></span>
                                         </div>

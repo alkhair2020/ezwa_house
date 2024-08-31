@@ -311,8 +311,9 @@ class ClientController extends Controller
     {
         $properties=Property::get();
         $client = Client::where('id',$client->id)->with('receipts')->first();
+        $report = Report::where('client_id',$client->id)->where('status','!=',0)->first();
         // dd($client);
-        return view('admin.clients.edit',compact('properties','client'));
+        return view('admin.clients.edit',compact('properties','client','report'));
     }
    
     public function update(Request $request, Client $client)
@@ -382,10 +383,12 @@ class ClientController extends Controller
             if(!empty($request->insurance)){
                 if(!$edit_report->receipt_id){
                     $edit_report->receipt_id    = $add_receipt->id;
+                    $edit_report->payment_way    = $request->payment_way;
                     $edit_report->save();
                 }
             }else{
                 $edit_report->receipt_id    = null;
+                $edit_report->payment_way    = $request->payment_way;
                 $edit_report->save();
             }
         }

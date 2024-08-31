@@ -59,6 +59,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <livewire:client-select /></div>
+                                </div>
                                 <table class="table table-striped table-bordered ">
                                     <thead>
                                         <tr>
