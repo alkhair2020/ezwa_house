@@ -137,6 +137,10 @@
                                                     <button type="button" class="btn btn-icon btn-primary">تجديد</button>
                                             </a>
                                         @endcan
+                                        <a class="btn btn-sm bg-success-light"
+                                            href="{{ url('admin/clients/receipt/form', $client->id) }}">
+                                            <button type="button" class="btn btn-icon btn-info mr-1">نموذج</button>
+                                        </a>
                                         @can('expense-print')
                                         @if($client->expenses)
                                         <a class="btn btn-sm bg-success-light"

@@ -23,7 +23,8 @@ class CleanController extends Controller
         list($createyear, $createmonth, $createday) = explode('-',  $cleans->created_at->format('Y-m-d'));
         $create_hijriDate = DateHelper::gregorianToHijri($createyear, $createmonth, $createday);
         $cleans->create_hijriDate="{$create_hijriDate['year']}-{$create_hijriDate['month']}-{$create_hijriDate['day']}";
-        return view('admin.cleans.print', compact('cleans'));
+        // return view('admin.cleans.print', compact('cleans'));
+        return view('admin.clients.printt', compact('cleans'));
     }
     
     public function index()

@@ -15,6 +15,17 @@ use Illuminate\Support\Carbon as Carbon;
 use App\Expense;
 class ClientController extends Controller
 {
+    
+    public function ReceiptForm($id){
+        $clients = Client::where('id',$id)->with('properties')->with('receipts')->first();
+
+        list($createyear, $createmonth, $createday) = explode('-',  $clients->created_at->format('Y-m-d'));
+        $create_hijriDate = DateHelper::gregorianToHijri($createyear, $createmonth, $createday);
+        $clients->create_hijriDate="{$create_hijriDate['year']}-{$create_hijriDate['month']}-{$create_hijriDate['day']}";
+        
+        // dd($clients);
+        return view('admin.clients.printt', compact('clients'));
+    }
     public function print($id)
     {
         // Fetch invoice data from the database

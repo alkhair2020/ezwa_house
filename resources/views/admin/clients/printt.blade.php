@@ -1,24 +1,23 @@
-
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="rtl">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
-  <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+  <meta name="description"
+    content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+  <meta name="keywords"
+    content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
   <meta name="author" content="PIXINVENT">
-  <title>Invoice Template - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin
-    Dashboard
+  <title>نظام تأجير الشقق
   </title>
   <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
-  rel="stylesheet">
-  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
-  rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+    rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
 
   <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/vendors.css')}}">
@@ -34,247 +33,362 @@
   <!-- BEGIN Custom CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/style-rtl.css')}}">
   <!-- END Custom CSS-->
- <!-- start datatables -->
+  <!-- start datatables -->
   <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/tables/datatable/datatables.min.css')}}">
   <!-- END datatables-->
-  
+
   <!-- start color message-->
   <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/core/colors/palette-callout.css')}}">
   <!-- END color message-->
 
-<!-- END Custom CSS-->
+  <!-- END Custom CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/pages/invoice.css')}}">
-<!-- END Page Level CSS-->
-  
+  <!-- END Page Level CSS-->
+
 </head>
-<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="hover"
-data-menu="horizontal-menu" data-col="2-columns">
+
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="hover" data-menu="horizontal-menu"
+  data-col="2-columns">
   <!-- fixed-top-->
- 
-  <div class="app-content container center-layout mt-2">
+
+  <div class="app-content container center-layout">
     <div class="content-wrapper">
-      <div class="content-header row">
-        <div class="content-header-left col-md-6 col-12 mb-2">
-          <div class="row breadcrumbs-top">
-            <div class="breadcrumb-wrapper col-12">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a>
-                </li>
-                <li class="breadcrumb-item"><a href="#">Invoice</a>
-                </li>
-                <li class="breadcrumb-item active">Invoice Template
-                </li>
-              </ol>
-            </div>
-          </div>
-          <h3 class="content-header-title mb-0">Invoice Template</h3>
-        </div>
-        <div class="content-header-right col-md-6 col-12">
-          <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-            <button class="btn btn-info round dropdown-toggle dropdown-menu-right box-shadow-2 px-2"
-            id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false"><i class="ft-settings icon-left"></i> Settings</button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"><a class="dropdown-item" href="card-bootstrap.html">Cards</a><a class="dropdown-item"
-              href="component-buttons-extended.html">Buttons</a></div>
-          </div>
-        </div>
-      </div>
+
       <div class="content-body">
         <section class="card">
           <div id="invoice-template" class="card-body">
-            <!-- Invoice Company Details -->
-            <div id="invoice-company-details" class="row">
-              <div class="col-md-6 col-sm-12 text-center text-md-left">
-                <div class="media">
-                  <img src="../../../app-assets/images/logo/logo-80x80.png" alt="company logo" class=""
-                  />
-                  <div class="media-body">
-                    <ul class="ml-2 px-0 list-unstyled">
-                      <li class="text-bold-800">Modern Creative Studio</li>
-                      <li>4025 Oak Avenue,</li>
-                      <li>Melbourne,</li>
-                      <li>Florida 32940,</li>
-                      <li>USA</li>
-                    </ul>
-                  </div>
+            <div id="invoice-company-details" class="row ">
+                <div class="col-md-5 col-sm-12  text-md-left">
+                    <div class="media">
+                    <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="220" style="    max-width: 100%;height: 90PX;" />
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right">
-                <h2>INVOICE</h2>
-                <p class="pb-3"># INV-001001</p>
-                <ul class="px-0 list-unstyled">
-                  <li>Balance Due</li>
-                  <li class="lead text-bold-800">$ 12,000.00</li>
-                </ul>
+                <div class="col-md-4 col-sm-12  ">
+                    <u><h2>
+                    نموذج استلام المستأجر للوحدة الإيجارية
+                    </h2>
+                    </u>
+                </div>
+            </div>
+            <!-- <div id="invoice-company-details" class="row ">
+                <div class="col-md-10 col-sm-12  text-md-left">
+                    <div class="media">
+                    <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="200" style="    max-width: 100%;height: 71PX;" />
+                    </div>
+                </div>
+            </div> -->
+            <br>
+            <!-- /////////////////// -->
+            <div id="" class="row">
+              <div class="col-md-12 col-sm-12 ">
+              <u><h2>بيانات العقد</h2></u>
               </div>
             </div>
-            <!--/ Invoice Company Details -->
-            <!-- Invoice Customer Details -->
-            <div id="invoice-customer-details" class="row pt-2">
-              <div class="col-sm-12 text-center text-md-left">
-                <p class="text-muted">Bill To</p>
+            <div id="" class="row  text-center">
+              <div class="col-md-4 col-sm-3 pt-2  text-center">
+                <p > رقم العقد : {{$clients->properties->number }} </p>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-left">
-                <ul class="px-0 list-unstyled">
-                  <li class="text-bold-800">Mr. Bret Lezama</li>
-                  <li>4879 Westfall Avenue,</li>
-                  <li>Albuquerque,</li>
-                  <li>New Mexico-87102.</li>
-                </ul>
+              <div class="col-md-3 col-sm-3 pt-2  text-center">
+                <p > مبلغ التأمين : 
+                  @if($clients->receipts)
+                    {{$clients->receipts->amount}} 
+                  @else
+                    0
+                  @endif
+                </p>
               </div>
-              <div class="col-md-6 col-sm-12 text-center text-md-right">
-                <p>
-                  <span class="text-muted">Invoice Date :</span> 06/05/2017</p>
-                <p>
-                  <span class="text-muted">Terms :</span> Due on Receipt</p>
-                <p>
-                  <span class="text-muted">Due Date :</span> 10/05/2017</p>
+              <div class="col-md-4 col-sm-3 pt-2  text-center">
+                <p> تاريخ الاستلام : {{$clients->created_at->format('Y-m-d') }} م</p>
               </div>
             </div>
-            <!--/ Invoice Customer Details -->
-            <!-- Invoice Items Details -->
+            <div id="" class="row">
+              <div class="col-md-12 col-sm-12 ">
+              <u><h2>بيانات المستأجر</h2></u>
+              </div>
+            </div>
+            <div id="" class="row  text-center">
+              <div class="col-md-4 col-sm-3 pt-1">
+                <p > أسم المستأجر : {{$clients->name }} </p>
+              </div>
+              <div class="col-md-3 col-sm-3 pt-1">
+                <p > رقم الهوية \ الاقامة : {{$clients->id_number }} </p>
+              </div>
+            </div>
+            <div id="" class="row">
+              <div class="col-md-12 col-sm-12 ">
+              <u><h2>بيانات المؤجر</h2></u>
+              </div>
+            </div>
+            <div id="" class="row  text-center">
+              <div class="col-md-4 col-sm-3 pt-1">
+                <p > أسم المنشأة : {{$clients->properties->number }} </p>
+              </div>
+              <div class="col-md-3 col-sm-3 pt-1">
+                <p > رقم المنشأة  : {{$clients->properties->number }} </p>
+              </div>
+            </div>
+            <br>
+            <div class="row ">
+              <div class="col-md-12 col-sm-12 pt-2">
+              <u><h2>حالة الوحدة الإجارية عند الإستلام</h2></u>
+              </div>
+            </div>
+            <br>
             <div id="invoice-items-details" class="pt-2">
               <div class="row">
                 <div class="table-responsive col-sm-12">
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Item & Description</th>
-                        <th class="text-right">Rate</th>
-                        <th class="text-right">Hours</th>
-                        <th class="text-right">Amount</th>
+                        <th class="text-center col-sm-3">البند</th>
+                        <th class="text-center col-sm-4">الحالة</th>
+                        <th class="text-center">الملاحظة</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>
-                          <p>Create PSD for mobile APP</p>
-                          <p class="text-muted">Simply dummy text of the printing and typesetting industry.</p>
-                        </td>
-                        <td class="text-right">$ 20.00/hr</td>
-                        <td class="text-right">120</td>
-                        <td class="text-right">$ 2400.00</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>
-                          <p>iOS Application Development</p>
-                          <p class="text-muted">Pellentesque maximus feugiat lorem at cursus.</p>
-                        </td>
-                        <td class="text-right">$ 25.00/hr</td>
-                        <td class="text-right">260</td>
-                        <td class="text-right">$ 6500.00</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>
-                          <p>WordPress Template Development</p>
-                          <p class="text-muted">Vestibulum euismod est eu elit convallis.</p>
-                        </td>
-                        <td class="text-right">$ 20.00/hr</td>
-                        <td class="text-right">300</td>
-                        <td class="text-right">$ 6000.00</td>
-                      </tr>
+                        <tr>
+                            <td class="text-center">
+                              دهانات الشقة والجدران
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                الأرضيات
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"> </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                 الحمامات والأطقم الصحية
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"> </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                المطبخ وملاحقاته
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"> </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                الغرف
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center">  </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                              النوافذ
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"> </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                              أجهزة التكييف
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                              المفاتيح
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                              الاجهزة الكهربائية
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"> </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                              أخرى
+                            </td>
+                            <td class="text-center">
+                              <div class="d-flex justify-content-around align-items-center">
+                                  <label>
+                                      <input type="checkbox" > جيد
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > مناسب
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" > ردئ
+                                  </label>
+                              </div>
+                            </td>
+                            <td class="text-center"> </td>
+                        </tr>
+                        
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-7 col-sm-12 text-center text-md-left">
-                  <p class="lead">Payment Methods:</p>
-                  <div class="row">
-                    <div class="col-md-8">
-                      <table class="table table-borderless table-sm">
-                        <tbody>
-                          <tr>
-                            <td>Bank name:</td>
-                            <td class="text-right">ABC Bank, USA</td>
-                          </tr>
-                          <tr>
-                            <td>Acc name:</td>
-                            <td class="text-right">Amanda Orton</td>
-                          </tr>
-                          <tr>
-                            <td>IBAN:</td>
-                            <td class="text-right">FGS165461646546AA</td>
-                          </tr>
-                          <tr>
-                            <td>SWIFT code:</td>
-                            <td class="text-right">BTNPP34</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-5 col-sm-12">
-                  <p class="lead">Total due</p>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>Sub Total</td>
-                          <td class="text-right">$ 14,900.00</td>
-                        </tr>
-                        <tr>
-                          <td>TAX (12%)</td>
-                          <td class="text-right">$ 1,788.00</td>
-                        </tr>
-                        <tr>
-                          <td class="text-bold-800">Total</td>
-                          <td class="text-bold-800 text-right"> $ 16,688.00</td>
-                        </tr>
-                        <tr>
-                          <td>Payment Made</td>
-                          <td class="pink text-right">(-) $ 4,688.00</td>
-                        </tr>
-                        <tr class="bg-grey bg-lighten-4">
-                          <td class="text-bold-800">Balance Due</td>
-                          <td class="text-bold-800 text-right">$ 12,000.00</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="text-center">
-                    <p>Authorized person</p>
-                    <img src="../../../app-assets/images/pages/signature-scan.png" alt="signature" class="height-100"
-                    />
-                    <h6>Amanda Orton</h6>
-                    <p class="text-muted">Managing Director</p>
-                  </div>
-                </div>
-              </div>
+             
             </div>
-            <!-- Invoice Footer -->
-            <div id="invoice-footer">
-              <div class="row">
-                <div class="col-md-7 col-sm-12">
-                  <h6>Terms & Condition</h6>
-                  <p>You know, being a test pilot isn't always the healthiest business
-                    in the world. We predict too much for the next year and yet far
-                    too little for the next 10.</p>
+          
+            <br>
+            <!-- /////////////////// -->
+            <div id="invoice-customer-details" class="row " style="">
+                <div class="col-md-12 col-sm-12 " style="">
+                    <p> 
+                    أقر انا الموقع والمستاجر ادناه بأني قد استلمت اليوم بتاريخ
+                     ({{$clients->created_at->format('Y-m-d') }} م) 
+                     الموافق
+                     ({{$clients->create_hijriDate }} هـ) 
+                     الواحدات الايجارية الموضح بيناتها في العقد وهي بحالة جيده ونظيفة وصالحة للغرض الذي استأجرتها من أجله وليس لدي أي ملاحظات تتعلق بالمساس بمنفعتي بها .(انتر) كما أقر بمعاينتي للواحدات الإيجارية المعاينة النافية للجهالة وقمت بالتحقق من جميع التفاصيل المذكورة في هذا النموذج . كما اتعهد بتسليم الوحدات الايجارية عند انتهاء العقد بالحالة التي كانت عليها عند استلامها .
+                    </p>
+                    
+                   <br>
+                   <br>
                 </div>
-                <div class="col-md-5 col-sm-12 text-center">
-                  <button type="button" class="btn btn-info btn-lg my-1"><i class="la la-paper-plane-o"></i> Send Invoice</button>
-                </div>
-              </div>
+                
             </div>
-            <!--/ Invoice Footer -->
+            <div id="invoice-customer-details" class="row " style="">
+                <div class="col-md-6 col-sm-12 " style="">
+                   
+                    <p class="ml-2">توقيع المستأجر  </p>
+                    <p class="ml-2">
+                    ......................
+                    </p>
+                </div>
+                <div class="col-md-5 col-sm-12 text-center" style="">
+                    <p>
+                    توقيع المسئول 
+                    </p>
+                    <p class="ml-2">
+                    .......................
+                    </p>
+                </div>
+            </div>
+            <!-- /////////////////// -->
+
+
+
           </div>
         </section>
       </div>
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <footer class="footer footer-static footer-light navbar-shadow">
-    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-      <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2018 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent"
-        target="_blank">PIXINVENT </a>, All rights reserved. </span>
-      <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span>
-    </p>
-  </footer>
+
 
   <script src="{{asset('admin/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
@@ -291,16 +405,28 @@ data-menu="horizontal-menu" data-col="2-columns">
   <script type="text/javascript" src="{{asset('admin/js/scripts/ui/breadcrumbs-with-stats.js')}}"></script>
   <!-- END PAGE LEVEL JS-->
 
-<!--  start table datatable  -->
+  <!--  start table datatable  -->
   <script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('admin/js/scripts/tables/datatables/datatable-basic.js')}}" type="text/javascript"></script>
-<!-- END table datatable-->
-<script>
-        window.print();
-    </script>
-    <div class="no-print">
-        <button onclick="window.print();">Print Invoice</button>
-    </div>
-  
+  <!-- END table datatable-->
+  <!-- <script>
+    window.print();
+  </script> -->
+
+  <style>
+    html body {
+      height: 100%;
+      background-color: #fff !important;
+      direction: rtl;
+    }
+
+
+
+    p {
+      margin-top: 0;
+      margin-bottom: .8rem !important;
+    }
+  </style>
 </body>
+
 </html>
