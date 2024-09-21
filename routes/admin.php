@@ -12,7 +12,12 @@ use App\Helpers\DateHelper;
  Route::resource('admin/visas','Admin\VisaController');
  Route::resource('admin/tickets','Admin\TicketController');
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'], function () {        
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'], function () {     
+    
+    Route::get('/cleint-import', function () {
+        return view('admin.cleint_import');
+    });
+
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     Route::resource('prices','PriceController');
