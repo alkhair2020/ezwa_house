@@ -63,10 +63,10 @@
                     <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="220" style="    max-width: 100%;height: 90PX;" />
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12  ">
-                    <u><h2>
+                <div class="col-md-5 col-sm-12  ">
+                    <u><h4>
                     نموذج استلام المستأجر للوحدة الإيجارية
-                    </h2>
+                    </h4>
                     </u>
                 </div>
             </div>
@@ -81,14 +81,16 @@
             <!-- /////////////////// -->
             <div id="" class="row">
               <div class="col-md-12 col-sm-12 ">
-              <u><h2>بيانات العقد</h2></u>
+              <u><h4>بيانات العقد</h4></u>
               </div>
             </div>
-            <div id="" class="row  text-center">
-              <div class="col-md-4 col-sm-3 pt-2  text-center">
+            <div id="" class="row  ">
+              <div class="col-md-2 col-sm-4 ">
+              </div>
+              <div class="col-md-4 col-sm-3 ">
                 <p > رقم العقد : {{$clients->properties->number }} </p>
               </div>
-              <div class="col-md-3 col-sm-3 pt-2  text-center">
+              <div class="col-md-3 col-sm-3 ">
                 <p > مبلغ التأمين : 
                   @if($clients->receipts)
                     {{$clients->receipts->amount}} 
@@ -97,40 +99,44 @@
                   @endif
                 </p>
               </div>
-              <div class="col-md-4 col-sm-3 pt-2  text-center">
+              <div class="col-md-3 col-sm-3 ">
                 <p> تاريخ الاستلام : {{$clients->created_at->format('Y-m-d') }} م</p>
               </div>
             </div>
             <div id="" class="row">
               <div class="col-md-12 col-sm-12 ">
-              <u><h2>بيانات المستأجر</h2></u>
+                  <u><h4>بيانات المستأجر</h4></u>
               </div>
             </div>
-            <div id="" class="row  text-center">
-              <div class="col-md-4 col-sm-3 pt-1">
+            <div id="" class="row  ">
+              <div class="col-md-2 col-sm-4 ">
+              </div>
+              <div class="col-md-4 col-sm-4 ">
                 <p > أسم المستأجر : {{$clients->name }} </p>
               </div>
-              <div class="col-md-3 col-sm-3 pt-1">
+              <div class="col-md-3 col-sm-3 ">
                 <p > رقم الهوية \ الاقامة : {{$clients->id_number }} </p>
               </div>
             </div>
             <div id="" class="row">
               <div class="col-md-12 col-sm-12 ">
-              <u><h2>بيانات المؤجر</h2></u>
+              <u><h4>بيانات المؤجر</h4></u>
               </div>
             </div>
-            <div id="" class="row  text-center">
-              <div class="col-md-4 col-sm-3 pt-1">
+            <div id="" class="row">
+              <div class="col-md-2 col-sm-4 ">
+              </div>
+              <div class="col-md-4 col-sm-4 ">
                 <p > أسم المنشأة : {{$clients->properties->number }} </p>
               </div>
-              <div class="col-md-3 col-sm-3 pt-1">
+              <div class="col-md-3 col-sm-3 ">
                 <p > رقم المنشأة  : {{$clients->properties->number }} </p>
               </div>
             </div>
             <br>
             <div class="row ">
-              <div class="col-md-12 col-sm-12 pt-2">
-              <u><h2>حالة الوحدة الإجارية عند الإستلام</h2></u>
+              <div class="col-md-12 col-sm-12 ">
+              <u><h4>حالة الوحدة الإجارية عند الإستلام</h4></u>
               </div>
             </div>
             <br>
@@ -147,7 +153,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                               دهانات الشقة والجدران
                             </td>
                             <td class="text-center">
@@ -159,14 +165,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" > غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"></td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                                 الأرضيات
                             </td>
                             <td class="text-center">
@@ -178,14 +184,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"> </td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                                  الحمامات والأطقم الصحية
                             </td>
                             <td class="text-center">
@@ -197,14 +203,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"> </td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                                 المطبخ وملاحقاته
                             </td>
                             <td class="text-center">
@@ -216,14 +222,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"> </td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                                 الغرف
                             </td>
                             <td class="text-center">
@@ -235,14 +241,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center">  </td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                               النوافذ
                             </td>
                             <td class="text-center">
@@ -254,14 +260,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"> </td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                               أجهزة التكييف
                             </td>
                             <td class="text-center">
@@ -273,14 +279,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"></td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                               المفاتيح
                             </td>
                             <td class="text-center">
@@ -292,14 +298,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"></td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                               الاجهزة الكهربائية
                             </td>
                             <td class="text-center">
@@ -311,14 +317,14 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
                             <td class="text-center"> </td>
                         </tr>
                         <tr>
-                            <td class="text-center">
+                            <td class="">
                               أخرى
                             </td>
                             <td class="text-center">
@@ -330,7 +336,7 @@
                                       <input type="checkbox" > مناسب
                                   </label>
                                   <label>
-                                      <input type="checkbox" > ردئ
+                                      <input type="checkbox" >  غير مناسب
                                   </label>
                               </div>
                             </td>
