@@ -1,5 +1,6 @@
 @extends('layout.admin_main')
 @section('content')
+<!-- ezwa hotel -->
 <div class="content-header row">
   <div class="content-header-left col-md-6 col-12 mb-2">
     <h3 class="content-header-title">الإحصائيات</h3>
