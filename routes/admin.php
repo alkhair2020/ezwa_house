@@ -71,12 +71,27 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
    Route::resource('cities','CityController');
    Route::resource('states','StateController');
    
-//    Route::get('/clients', function () {
-//     return view('admin.clients.create');
-//    });
-//     Route::get('/clients/create', function () {
-//         return view('admin.clients.create');
-//     });
+   
+    Route::get('/attendances', function () {
+        return view('admin.attendances.index');
+    });
+    Route::get('/salaries', function () {
+        return view('admin.salaries.index');
+    });
+
+    Route::get('/leaves', function () {
+        return view('admin.leaves.index');
+    });
+    Route::get('/attendances-report', function () {
+        return view('admin.attendances.report');
+    });
+    Route::get('/salaries-report', function () {
+        return view('admin.salaries.report');
+    });
+    Route::get('/leaves-report', function () {
+        return view('admin.leaves.report');
+    });
+    
 
    Route::get('settings','SettingController@settings');
    Route::post('settings/update','SettingController@updateSettings');

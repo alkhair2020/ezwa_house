@@ -87,6 +87,24 @@
         </a>
       </li>
       @endcan
+      <li class=" nav-item {{ Request::is('admin/attendances') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/attendances')}}">
+          <!-- <i class="la la-leanpub"></i> -->
+          <span>الحضور والانصراف</span>
+        </a>
+      </li>
+      <li class=" nav-item {{ Request::is('admin/leaves') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/leaves')}}">
+          <!-- <i class="la la-leanpub"></i> -->
+          <span>الاجازات</span>
+        </a>
+      </li>
+      <li class=" nav-item {{ Request::is('admin/salaries') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/salaries')}}">
+          <!-- <i class="la la-leanpub"></i> -->
+          <span>المرتبات</span>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
