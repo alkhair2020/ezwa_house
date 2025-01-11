@@ -236,16 +236,24 @@
        
 
 
-<script>
+    <script>
     function printContent() {
+        // احصل على محتوى القسم المراد طباعته
         var printContents = document.getElementById('printSection').innerHTML;
-        var originalContents = document.body.innerHTML;
 
+        // احفظ المرجع الأصلي لعنصر الصفحة
+        var originalBody = document.body.cloneNode(true);
+
+        // استبدل محتوى الصفحة مؤقتًا بمحتوى القسم المراد طباعته
         document.body.innerHTML = printContents;
+
+        // تنفيذ أمر الطباعة
         window.print();
-        document.body.innerHTML = originalContents;
+
+        // استعادة محتوى الصفحة الأصلي بعد الطباعة
+        document.body.replaceWith(originalBody);
     }
-</script>   
+</script>
    
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   
