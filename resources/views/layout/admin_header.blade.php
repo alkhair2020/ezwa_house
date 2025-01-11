@@ -105,6 +105,16 @@
           <span>المرتبات</span>
         </a>
       </li>
+      <li class=" nav-item {{ Request::is('admin/user-contracts') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/user-contracts')}}">
+          <span>عقود الموظفين</span>
+        </a>
+      </li>
+      <li class=" nav-item {{ Request::is('admin/user-permission') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/user-permission')}}">
+          <span>الأذونات</span>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

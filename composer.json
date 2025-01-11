@@ -29,7 +29,8 @@
         "spatie/laravel-translatable": "^4.6",
         "stichoza/google-translate-php": "^4.1",
         "tymon/jwt-auth": "^1.0",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+        "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
