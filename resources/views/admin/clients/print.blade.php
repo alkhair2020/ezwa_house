@@ -58,6 +58,58 @@
         <section class="card">
           <div id="invoice-template" class="card-body">
             <!-- Invoice Company Details -->
+
+
+
+
+
+
+
+            <?php
+                function generateQrCodess($data) {
+                    // $jsonData = json_encode($data);
+                    //  $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                    $textData = "https://maps.app.goo.gl/zVog8kDW2HwoZvw3A";
+                    // توليد الباركود بناءً على النص المنسق واستخدام UTF-8
+                    $qrCode = QrCode::format('svg')->encoding('UTF-8')->size(100)
+                                // ->color(0, 0, 0) 
+                                // ->backgroundColor(240, 220, 190)
+                                ->generate($textData);     
+                    // $qrCode = QrCode::format('svg')->size(100)->generate($textData);
+                    return 'data:image/svg+xml;base64,' . base64_encode($qrCode);
+                }
+                $qrCodeUrl = generateQrCodess([
+                    'clients_id' => 55, 
+                    'end_date' => 6565656, 
+                    'company_name' => "مرحبا" ,
+                    'tax_number' => 6845165 ,
+                ]);
+            ?>
+
+            <!-- <object type="image/svg+xml" data="{{ $qrCodeUrl }}">
+                <img src="{{ $qrCodeUrl }}" alt="Fallback Image" >
+            </object> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div id="invoice-company-details" class="row border border-2 border-dark p-1">
 
               <div class="col-md-10 col-sm-12 text-center text-md-left mt-1">
