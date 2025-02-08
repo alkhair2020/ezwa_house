@@ -47,7 +47,6 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div id="invoice-company-details" class="row " dir="ltr">
-                        
                         <div class="col-sm-2  "> 
                             <button type="button" class="btn btn-icon btn-info mr-1" onclick="printContent()" >
                                 <i class="la la-print"></i>
@@ -63,165 +62,253 @@
                     <div class="app-content container center-layout" id="printSection">
                         <div class="content-wrapper">
                             <div id="invoice-template" class="content-body">
+                                @if($employee)
                                 <section class="card">
                                     <div id="invoice-company-details" class="row   border-dark ">
                                         <div class="col-md-9 col-sm-9 text-center   p-2">
-                                        <h1> العزوة هاوس </h1>
+                                            <h1> العزوة هاوس </h1>
                                             <h2>مكة المكرمة ــ الشرائع الهاتف : ٠٥٠٩٩٠٩٣٩٣ فاكس: ٠١٢٥٣٩٩٩٠٣</h2>
                                         </div>
                                         <div class="col-md-3 col-sm-3  text-md-left">
                                             <div class="media">
-                                            <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid"width="220" style="    max-width: 100%;height: 100PX;"  />
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div id="invoice-template" class="card-body">
-                                            <div id="invoice-company-details" class="row ">
-                                                <div class="col-md-12 col-sm-12 pt-2 text-center">
-                                                    <u>
-                                                        <h1>نموذج تقرير عن الموظف</h1>
-                                                    </u>
-                                                </div>
-                                                <!-- <div class="col-md-2 col-sm-12 ">
-                                                </div>
-                                                <div class="col-md-3 col-sm-12  text-md-left">
-                                                    <div class="media">
-                                                        <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="220" style="    max-width: 100%;height: 120PX;" />
-                                                    </div>
-                                                </div> -->
-                                                
-                                            </div>
-                                            <div id="invoice-items-details" class="pt-1">
-                                                <div class="col-md-12 col-sm-12  ml-2">
-                                                    <h2>  البيانات الشخصية</h2>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="table-responsive col-sm-12 pl-3 pr-3 ">
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="text-center col-sm-2">نوع العطل</th>
-                                                                    <th class="text-center col-sm-2">الحالة</th>
-                                                                    <th class="text-center">وصف العطل</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        دورات المياة
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    htehte
-                                                                    </td>
-                                                                    <td class="text-center"> ertgeh</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        المكيفات
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    teheht
-                                                                    </td>
-                                                                    <td class="text-center"> ethte</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            
-                                            </div>
-                                            <div id="invoice-items-details" class="pt-1">
-                                                <div class="col-md-12 col-sm-12  ml-2">
-                                                    <h2>العقود</h2>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="table-responsive col-sm-12 pl-3 pr-3 ">
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="text-center col-sm-2">نوع العطل</th>
-                                                                    <th class="text-center col-sm-2">الحالة</th>
-                                                                    <th class="text-center">وصف العطل</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        دورات المياة
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    htehte
-                                                                    </td>
-                                                                    <td class="text-center"> ertgeh</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        المكيفات
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    teheht
-                                                                    </td>
-                                                                    <td class="text-center"> ethte</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            
-                                            </div>
-                                            <div id="invoice-items-details" class="pt-1">
-                                                <div class="col-md-12 col-sm-12  ml-2">
-                                                    <h2>الاذونات</h2>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="table-responsive col-sm-12 pl-3 pr-3 ">
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="text-center col-sm-2">نوع العطل</th>
-                                                                    <th class="text-center col-sm-2">الحالة</th>
-                                                                    <th class="text-center">وصف العطل</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        دورات المياة
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    htehte
-                                                                    </td>
-                                                                    <td class="text-center"> ertgeh</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        المكيفات
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                    teheht
-                                                                    </td>
-                                                                    <td class="text-center"> ethte</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            
-                                            </div>
-                                        </div>
-                                        <div id="invoice-customer-details" class="row ">
-                                            <div class=" col-sm-4 text-center" >
-                                            المدير / .....................
-                                            </div>
-                                            <div class=" col-sm-4 text-center" >
-                                                التوقيع .............................
-                                            </div>
-                                            <div class=" col-sm-4 text-center "maxlength="2" >
-                                            التاريخ &nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid"width="220" style="    max-width: 100%;height: 100PX;"  />
                                             </div>
                                         </div>
                                     </div>
-                                </section>
+                                    <br>
+                                    <div id="invoice-template" class="card-body">
+                                        <div id="invoice-company-details" class="row ">
+                                            <div class="col-md-12 col-sm-12 pt-2 text-center">
+                                                <u>
+                                                    <h1>نموذج تقرير عن الموظف</h1>
+                                                </u>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div id="invoice-items-details" class="pt-1">
+                                            <div class="col-md-12 col-sm-12  ml-2">
+                                                <h2>  البيانات الشخصية</h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="table-responsive col-sm-12 pl-3 pr-3 ">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-center ">
+                                                                    <strong>
+                                                                     اسم الموظف
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center 2">{{$employee->name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong>
+                                                                        الجنسية
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center ">{{$employee->nationality}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong>    
+                                                                        الحالة الاجتماعية
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center c">{{$employee->marital_status}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong>
+                                                                     المؤهل العلمي
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center ">{{$employee->qualification}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong>    
+                                                                    العنوان
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center ">{{$employee->address}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong>
+                                                                    الجوال
+                                                                    </strong>
+                                                                    </td>
+                                                                <td class="text-center ">{{$employee->phone}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                        <br>
+                                        <div id="invoice-items-details" class="pt-1">
+                                            <div class="col-md-12 col-sm-12  ml-2">
+                                                <h2>الوثائق</h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="table-responsive col-sm-12 pl-3 pr-3 ">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center col-sm-2"> الوثيقة</th>
+                                                                <th class="text-center col-sm-2">الرقم</th>
+                                                                <th class="text-center">تاريخ الاصدار</th>
+                                                                <th class="text-center">مكان الاصدار</th>
+                                                                <th class="text-center"> تاريخ الانتهاء</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong>
+                                                                        {{$employee->document_type}}
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center">{{$employee->identity_number}}</td>
+                                                                <td class="text-center"> {{$employee->document_issue_date}}</td>
+                                                                <td class="text-center"> {{$employee->place_of_issue}}</td>
+                                                                <td class="text-center"> {{$employee->document_expiry}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        @if($contract)
+                                        <div id="invoice-items-details" class="pt-1">
+                                            <div class="col-md-12 col-sm-12  ml-2">
+                                                <h2>العقود</h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="table-responsive col-sm-12 pl-3 pr-3 ">
+                                                    <table class="table ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center ">نوع العقد</th>
+                                                                <th class="text-center ">بداية العقد</th>
+                                                                <th class="text-center">نهاية العقد</th>
+                                                                <th class="text-center">مصدر التوظيف</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong> {{$contract->type}}
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    {{$contract->start_date}}
+                                                                </td>
+                                                                <td class="text-center"> {{$contract->end_date}}</td>
+                                                                <td class="text-center"> {{$contract->employment_source}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                        @endif
+                                        @if($leaves)
+                                        <div id="invoice-items-details" class="pt-1">
+                                            <div class="col-md-12 col-sm-12  ml-2">
+                                                <h2>الاجازات</h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="table-responsive col-sm-12 pl-3 pr-3 ">
+                                                    <table class="table ">
+                                                    <thead>
+                                                            <tr>
+                                                                <th>نوع الاجازة</th>
+                                                                <th>من تاريخ</th>
+                                                                <th>إلى تاريخ</th>
+                                                                <th>السبب</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($leaves as $key=>$leave)
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong> {{$leave->type}}
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    {{$leave->start_date}}
+                                                                </td>
+                                                                <td class="text-center"> {{$leave->end_date}}</td>
+                                                                <td class="text-center"> {{$leave->reason}}</td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                        @endif
+                                        @if($permissios)
+                                        <div id="invoice-items-details" class="pt-1">
+                                            <div class="col-md-12 col-sm-12  ml-2">
+                                                <h2>الأذونات</h2>
+                                            </div>
+                                            <div class="row">
+                                                <div class="table-responsive col-sm-12 pl-3 pr-3 ">
+                                                    <table class="table ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>نوع الاجازة</th>
+                                                                <th>من تاريخ</th>
+                                                                <th>إلى تاريخ</th>
+                                                                <th>السبب</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($leaves as $key=>$leave)
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <strong> {{$leave->type}}
+                                                                    </strong>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    {{$leave->start_date}}
+                                                                </td>
+                                                                <td class="text-center"> {{$leave->end_date}}</td>
+                                                                <td class="text-center"> {{$leave->reason}}</td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                        @endif
+                                    </div>
+                                   
+                                    <br>
+                                    <div id="invoice-customer-details" class="row ">
+                                        <div class=" col-sm-4 text-center" >
+                                        المدير / .....................
+                                        </div>
+                                        <div class=" col-sm-4 text-center" >
+                                            التوقيع .............................
+                                        </div>
+                                        <div class=" col-sm-4 text-center "maxlength="2" >
+                                        التاريخ &nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </section> 
+                                @endif  
                             </div>
                         </div>
                     </div>
@@ -233,8 +320,17 @@
             </div>
         </div>
     </div>
-       
+   
+    <style>
+table, td, th {
+  border: 1px solid #E3EBF3;
+}
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+</style>
 
     <script>
     function printContent() {

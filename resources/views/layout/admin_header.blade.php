@@ -87,6 +87,12 @@
         </a>
       </li>
       @endcan
+      <li class=" nav-item {{ Request::is('admin/employees') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/employees')}}">
+          <!-- <i class="la la-leanpub"></i> -->
+          <span>الموظفين</span>
+        </a>
+      </li>
       <li class=" nav-item {{ Request::is('admin/attendances') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/attendances')}}">
           <!-- <i class="la la-leanpub"></i> -->
@@ -97,6 +103,11 @@
         <a class="dropdown-toggle nav-link " href="{{url('admin/leaves')}}">
           <!-- <i class="la la-leanpub"></i> -->
           <span>الاجازات</span>
+        </a>
+      </li>
+      <li class=" nav-item {{ Request::is('admin/user-permission') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/user-permission')}}">
+          <span>الأذونات</span>
         </a>
       </li>
       <li class=" nav-item {{ Request::is('admin/salaries') ? 'active' : '' }}">
@@ -110,11 +121,7 @@
           <span>عقود الموظفين</span>
         </a>
       </li>
-      <li class=" nav-item {{ Request::is('admin/user-permission') ? 'active' : '' }}">
-        <a class="dropdown-toggle nav-link " href="{{url('admin/user-permission')}}">
-          <span>الأذونات</span>
-        </a>
-      </li>
+      
     </ul>
   </div>
 </div>

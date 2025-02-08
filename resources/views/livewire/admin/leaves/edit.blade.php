@@ -54,7 +54,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput5"> النوع </label>
+                                            <label for="projectinput5"> نوع الاجازة </label>
                                             <select id="projectinput5" wire:model="type" name="status" class="form-control">
                                                 <option value="" selected="" >اختر النوع</option>
                                                 <option value="Sick"  {{ $status == 'Sick' ? "selected" : "" }}>مرضية</option>
@@ -93,9 +93,16 @@
                                             @error('deductions')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
+                                    <!-- <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="contractType">الوقت</label>
+                                            <input type="text" wire:model="time" id="contractType" class="form-control">
+                                            @error('time') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div> -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="projectinput1"> الخصومات</label>
+                                            <label for="projectinput1"> السبب</label>
                                             <textarea wire:model="reason" class="form-control" placeholder="السبب"></textarea>
                                             @error('deductions')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Leaves;
+namespace App\Http\Livewire\Admin\Permission;
 
 use Livewire\Component;
 use App\Leave;
 use App\User;
 use Livewire\WithPagination;
-class LeaveComponent extends Component
+class PermissionComponent extends Component
 {
+    
     public $user_id, $leave_id, $type, $start_date, $end_date,$time, $reason, $status, $data_length;
     
     use WithPagination;
@@ -23,7 +24,7 @@ class LeaveComponent extends Component
 
         $add = new Leave;
         $add->user_id    = $this->user_id;
-        $add->type    = $this->type;
+        $add->type    = "permission";
         $add->start_date    = $this->start_date;
         $add->end_date    = $this->end_date;
         $add->time    = $this->time;
@@ -40,13 +41,14 @@ class LeaveComponent extends Component
         $edit = Leave::findOrFail($id);
         // $this->user_id = $id;
         $this->leave_id = $id;
-        $this->type = $edit->type;
+        // $this->type = $edit->type;
         $this->start_date = $edit->start_date;
         $this->end_date = $edit->end_date;
         $this->time = $edit->time;
         $this->status = $edit->status;
-        $this->reason = $edit->reason;
+        
 
+        $this->reason = $edit->reason;
         $this->isEdit = true;
         $this->isList = false;
         $this->isDeleted = false;
@@ -56,20 +58,20 @@ class LeaveComponent extends Component
     {
         $edit = Leave::findOrFail($this->leave_id);
         
-        if(isset($this->type)){
-            $edit->type    = $this->type;
-        }
+        // if(isset($this->type)){
+        //     $edit->type    = $this->type;
+        // }
         if(isset($this->start_date)){
             $edit->start_date    = $this->start_date;
         }
         if(isset($this->end_date)){
             $edit->end_date    = $this->end_date;
         }
-        if(isset($this->status)){
-            $edit->status    = $this->status;
-        }
         if(isset($this->time)){
             $edit->time    = $this->time;
+        }
+        if(isset($this->status)){
+            $edit->status    = $this->status;
         }
         if(isset($this->reason)){
             $edit->reason    = $this->reason;
@@ -101,6 +103,7 @@ class LeaveComponent extends Component
     {
         $this->isCreate = true;
         $this->isList = false;
+        $this->resetInputFields();
     }
     public function closeCreateOredit()
     {
@@ -110,17 +113,18 @@ class LeaveComponent extends Component
     }
     private function resetInputFields()
     {
-        $this->attendance_id = '';
-        $this->date = '';
+        $this->leave_id = '';
+        $this->start_date = '';
+        $this->end_date = '';
+        $this->time = '';
         $this->status = '';
-        $this->check_in = '';
-        $this->check_out = '';
+        $this->reason = '';
     }
 
     public function render()
     {
         if($this->data_length){
-            $leaves = Leave::with('users')->where('type',"!=",'permission')
+            $leaves = Leave::with('users')->where('type','permission')
                 ->whereHas('users', function($query) {
                     $query->where('name', 'like', '%'.$this->search.'%');
                 })
@@ -128,7 +132,7 @@ class LeaveComponent extends Component
             
         }elseif($this->status_filter){
             // dd('ss');
-            $leaves = Leave::with('users')->where('type',"!=",'permission')
+            $leaves = Leave::with('users')->where('type','permission')
                 ->where('status', $this->status_filter)
                 ->whereHas('users', function($query) {
                     $query->where('name', 'like', '%'.$this->search.'%');
@@ -137,28 +141,28 @@ class LeaveComponent extends Component
         }else{
             $leaves = Leave::select('leaves.*')
                     ->join('users', 'leaves.user_id', '=', 'users.id') 
-                    ->where('leaves.type',"!=",'permission')
+                    ->where('leaves.type', 'permission')
                     ->where('users.name', 'like', '%' . $this->search . '%')
                     ->paginate(10);
             
         }
+        // dd( $leaves);
         $this->data_length=0;
         $this->status_filter='';
         $users = User::get();
-        return view('livewire.admin.leaves.leave-component',compact('leaves','users'));
+        return view('livewire.admin.permission.permission-component',compact('leaves','users'));
+        // return view('livewire.admin.permission.user-permission',compact('leaves','users'));
     }
     public function validateCreate()
     {
         $this->validate([
                 'user_id'=>'required',
-                'type'=>'required',
                 'start_date'=>'required',
                 // 'check_in'=>'required',
                 // 'check_out'=>'required',
             ],
             [
                 'user_id.required'=>'الموظف مطلوب',
-                'type.required'=>'نوع الاجازة مطلوب',
                 'start_date.required'=>'التاريخ مطلوب',
                 // 'check_in.required'=>'سعر الاسبوع مطلوب',
                 // 'check_out.required'=>'',

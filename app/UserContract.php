@@ -14,6 +14,7 @@ class UserContract extends Model
     protected $fillable = [
         'user_id',
         'type',
+        'employment_source',
         'start_date',
         'end_date',
     ];

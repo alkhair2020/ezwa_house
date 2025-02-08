@@ -1,14 +1,13 @@
-<div>
-    
 
-@if($isCreate)
-        @include('livewire.admin.users-contracts.create')
+<div>
+    @if($isCreate)
+        @include('livewire.admin.permission.create')
     @endif
     @if($isEdit)
-        @include('livewire.admin.users-contracts.edit')
+        @include('livewire.admin.permission.edit')
     @endif
     
-    @include('livewire.admin.users-contracts.modal')
+    @include('livewire.admin.permission.modal')
     @if($isList)
         <section id="multi-column">
             <div class="content-header row">
@@ -19,7 +18,7 @@
                 <div class="col-md-12 col-12">
                     <div class="dropdown float-md-right">
                         <!-- <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a> -->
-                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة وحدة</button>
+                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة إذن</button>
                     </div>
                 </div>
                 @endcan
@@ -29,7 +28,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">الاجازات</h4>
+                            <h4 class="card-title">الاستئذان</h4>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                                 <ul class="list-inline mb-0">
@@ -99,32 +98,53 @@
                                 <table class="table table-striped table-bordered ">
                                     <thead>
                                         <tr>
-                                            <th>المستخدم</th>
-                                            <th>نوع العقد</th>
-                                            <th>بدايه العقد</th>
-                                            <th>نهاية العقد</th>
-                                            <th>مصدر التوظيف</th>
-                                            <th></th>
+                                            <th>الموظف</th>
+                                            <!-- <th>النوع</th> -->
+                                            <th>من تاريخ</th>
+                                            <th>إلى تاريخ</th>
+                                            <th>الوقت</th>
+                                            <th>السبب</th>
+                                            <th>الحالة</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($contracts as $contract)
+                                        @foreach ($leaves as $leave)
                                             <tr>
-                                                <td>{{ $contract->user->name }}</td>
-                                                <td>{{ $contract->type }}</td>
-                                                <td>{{ $contract->start_date }}</td>
-                                                <td>{{ $contract->end_date }}</td>
-                                                <td>{{ $contract->employment_source }}</td>
+                                                <td>{{ $leave->users->name }}</td>
+                                                <!-- <td>
+                                                    @if($leave->type=='Sick')
+                                                        مرضية 
+                                                    @elseif($leave->type=='Annual')
+                                                        سنوية
+                                                    @elseif($leave->type=='Emergency') 
+                                                        طارئة
+                                                    @elseif($leave->type=='Unpaid')
+                                                        غير مدفوعة
+                                                    @endif    
+                                                </td> -->
+                                                <td>{{ $leave->start_date }}</td>
+                                                <td>{{ $leave->end_date }}</td>
+                                                <td>{{ $leave->time }}</td>
+                                                <td>{{ $leave->reason }}</td>
+                                                <td>
+                                                    @if($leave->status=='Pending')
+                                                        في الانتظار
+                                                    @elseif($leave->status=='Approved')
+                                                        موافقة
+                                                    @else
+                                                        رفض
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @can('property-edit')
-                                                    <a class="btn btn-sm bg-success-light" wire:click="edit({{ $contract->id }})">
+                                                    <a class="btn btn-sm bg-success-light" wire:click="edit({{ $leave->id }})">
                                                         <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                             class="la la-edit"></i></button>
                                                     </a>
                                                     @endcan
                                                     @can('property-delete')
                                                     <a data-toggle="modal" data-target="#delete">
-                                                        <button type="button" class="btn btn-icon btn-danger mr-1" wire:click="gitIdForDelete({{ $contract->id }})"><i
+                                                        <button type="button" class="btn btn-icon btn-danger mr-1" wire:click="gitIdForDelete({{ $leave->id }})"><i
                                                                 class="la la-trash"></i></button>
                                                     </a>
                                                     @endcan
@@ -132,11 +152,10 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                   
                                     
                                 </table>
                                 <div class="col-lg-12 col-md-12 pagination justify-content-center pagination-separate">
-                                    {{ $contracts->links() }}
+                                    {{ $leaves->links() }}
                                 </div>
                             </div>
                         </div>
@@ -146,7 +165,6 @@
         </section>
     @endif
 </div>
-
 
 
 

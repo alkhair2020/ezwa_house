@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class UsersContracts extends Component
 {
     use WithPagination;
-    public $contractId, $userId, $type, $startDate, $endDate ,$data_length;
+    public $contractId, $userId, $type, $employmentSource, $startDate, $endDate,  $data_length;
     // public $isEdit = false;
     public $search = '';
     public $isCreate = 0;
@@ -73,6 +73,7 @@ class UsersContracts extends Component
         $this->contract_id = null;
         $this->userId = null;
         $this->type = null;
+        $this->employmentSource = null;
         $this->startDate = null;
         $this->endDate = null;
         $this->isEdit = false;
@@ -84,6 +85,7 @@ class UsersContracts extends Component
         UserContract::create([
             'user_id' => $this->userId,
             'type' => $this->type,
+            'employment_source' => $this->employmentSource,
             'start_date' => $this->startDate,
             'end_date' => $this->endDate,
         ]);
@@ -100,6 +102,7 @@ class UsersContracts extends Component
         $this->contractId = $contract->id;
         $this->userId = $contract->user_id;
         $this->type = $contract->type;
+        $this->employmentSource = $contract->employment_source;
         $this->startDate = $contract->start_date;
         $this->endDate = $contract->end_date;
         
@@ -117,12 +120,14 @@ class UsersContracts extends Component
         $contract->update([
             'user_id' => $this->userId,
             'type' => $this->type,
+            'employment_source' => $this->employmentSource,
             'start_date' => $this->startDate,
             'end_date' => $this->endDate,
         ]);
 
         $this->resetForm();
         session()->flash('message', 'Contract updated successfully.');
+        $this->closeCreateOredit();
     }
 
     public function delete($id)

@@ -16,10 +16,10 @@ class CreateLeavesTable extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->index('user_id'); // معرف الموظف
-            $table->string('type')->nullable(); // نوع الإجازة (مرضية، سنوية، طارئة، غير مدفوعة).
+            $table->string('type')->nullable(); // نوع الإجازة (مرضية، سنوية، طارئة، غير مدفوعة ,استئذان).
             $table->date('start_date')->nullable(); // تاريخ بداية الإجازة
             $table->date('end_date')->nullable(); // تاريخ نهاية الإجازة
-            $table->integer('total_days')->nullable(); // إجمالي عدد الأيام
+            $table->string('time')->nullable(); // إجمالي عدد الايام او الساعات
             $table->text('reason')->nullable(); // سبب الإجازة (اختياري)
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending'); // حالة الإجازة
             $table->timestamps();

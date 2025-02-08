@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Admin\Employees;
 
 use Livewire\Component;
 use App\User;
+use App\Leave;
+use App\UserContract;
 use Livewire\WithPagination;
 class EmployeeComponent extends Component
 {
@@ -17,6 +19,11 @@ class EmployeeComponent extends Component
     public $isList = 1;
     public $date_filter;
     public $isPrint = 0;
+    public $employee=null;
+    public $contract=null;
+
+    public $leaves;
+    public $permissios;
     public function store()
     {
         $this->validateCreate();
@@ -50,8 +57,11 @@ class EmployeeComponent extends Component
     }
     public function print($id)
     {
-        $property = User::findOrFail($id);
-        
+        $this->leaves = Leave::where('type',"!=",'permission')->get();
+        $this->permissios = Leave::where('type','permission')->get();
+        $this->employee = User::findOrFail($id);
+        $this->contract = UserContract::where('user_id',$id)->with('user')->first();
+        // dd($this->contract);
         // $this->isList = false;
         $this->isPrint = true;
     }
@@ -118,9 +128,9 @@ class EmployeeComponent extends Component
     public function render()
     {
         if($this->data_length){
-            $users = User::where('name', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate($this->data_length);
+            $users = User::where('type','employee')->where('name', 'like', '%'.$this->search.'%')->orderBy('id','DESC')->paginate($this->data_length);
         }else{
-            $users = User::where('name', 'like', '%'.$this->search.'%')->paginate(10);
+            $users = User::where('type','employee')->where('name', 'like', '%'.$this->search.'%')->paginate(10);
         }
         return view('livewire.admin.employees.employee-component',compact('users'));
     }

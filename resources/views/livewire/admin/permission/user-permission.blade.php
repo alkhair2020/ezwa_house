@@ -1,13 +1,13 @@
 
 <div>
     @if($isCreate)
-        @include('livewire.admin.leaves.create')
+        @include('livewire.admin.permission.create')
     @endif
     @if($isEdit)
-        @include('livewire.admin.leaves.edit')
+        @include('livewire.admin.permission.edit')
     @endif
     
-    @include('livewire.admin.leaves.modal')
+    @include('livewire.admin.permission.modal')
     @if($isList)
         <section id="multi-column">
             <div class="content-header row">

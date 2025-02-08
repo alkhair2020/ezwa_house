@@ -16,7 +16,8 @@ class CreateUserContractsTable extends Migration
         Schema::create('user_contracts', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->index('user_id');
-            $table->string('type'); 
+            $table->string('type');
+            $table->string('employment_source')->nullable(); // مصدر التوظيف
             $table->date('start_date'); 
             $table->date('end_date')->nullable();
             $table->timestamps();

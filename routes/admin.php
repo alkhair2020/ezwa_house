@@ -82,12 +82,13 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
     Route::get('/leaves', function () {
         return view('admin.leaves.index');
     });
-    Route::get('/user-contracts', function () {
-        return view('admin.userContracts.index');
-    });
     Route::get('/user-permission', function () {
         return view('admin.permission.index');
     });
+    Route::get('/user-contracts', function () {
+        return view('admin.userContracts.index');
+    });
+    
     Route::get('/employees', function () {
         return view('admin.users.index');
         // return view('livewire.admin.employees.print');

@@ -21,7 +21,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">إضافة اجازة</h4>
+                    <h4 class="card-title" id="basic-layout-form">إضافة عقد</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -38,10 +38,10 @@
                             <div class="form-body">
                                 <!-- <h4 class="form-section"><i class="ft-user"></i>  </h4> -->
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput5"> الموظف </label>
-                                            <select id="projectinput5 " wire:model="user_id"  class="form-control select2">
+                                            <select id="projectinput5 " wire:model="userId"  class="form-control select2">
                                                 <option value="" selected="" >اختر الموظف</option>
                                                 @foreach ($users as $user)
                                                 <option value="{{$user->id}}">{{$user->name}}</option>
@@ -50,14 +50,21 @@
                                             @error('user_id')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="contractType">Contract Type</label>
+                                            <label for="contractType">نوع العقد</label>
                                             <input type="text" wire:model="type" id="contractType" class="form-control">
                                             @error('contractType') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="contractType">مصدر التوظيف</label>
+                                            <input type="text" wire:model="employmentSource" id="contractType" class="form-control">
+                                            @error('employmentSource') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="projectinput1"> تاريخ البداية </label>
                                             <input type="date" wire:model="startDate" class="form-control" placeholder=" تاريخ البداية"  >
@@ -65,13 +72,14 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="projectinput1"> تاريخ النهاية </label>
                                             <input type="date" wire:model="endDate" class="form-control" placeholder="تاريخ النهاية"  >
                                             @error('endDate')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
+                                    
                                     
                                 </div>
                             

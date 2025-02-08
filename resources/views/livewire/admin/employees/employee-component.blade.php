@@ -9,6 +9,7 @@
     @include('livewire.admin.employees.modal')
     
         @include('livewire.admin.employees.print')
+   
   
     @if($isList)
         <section id="multi-column">
@@ -20,7 +21,7 @@
                 <div class="col-md-12 col-12">
                     <div class="dropdown float-md-right">
                         <!-- <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a> -->
-                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة وحدة</button>
+                        <!-- <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة وحدة</button> -->
                     </div>
                 </div>
                 @endcan
@@ -71,8 +72,8 @@
                                             <th class="wd-10p border-bottom-0">#</th>
                                             <th class="wd-15p border-bottom-0">اسم المستخدم</th>
                                             <th class="wd-20p border-bottom-0">البريد الالكتروني</th>
-                                            <th class="wd-15p border-bottom-0">حالة المستخدم</th>
-                                            <th class="wd-15p border-bottom-0">نوع المستخدم</th>
+                                            <!-- <th class="wd-15p border-bottom-0"> الجوال</th> -->
+                                            <!-- <th class="wd-15p border-bottom-0">نوع المستخدم</th> -->
                                             <th class="wd-10p border-bottom-0">العمليات</th>
                                         </tr>
                                     </thead>
@@ -82,24 +83,14 @@
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>
-                                                @if ($user->Status == 'مفعل')
-                                                <span class="label text-success d-flex">
-                                                    <div class="dot-label bg-success ml-1"></div>{{ $user->Status }}
-                                                </span>
-                                                @else
-                                                <span class="label text-danger d-flex">
-                                                    <div class="dot-label bg-danger ml-1"></div>{{ $user->Status }}
-                                                </span>
-                                                @endif
-                                                </td>
-                                                <td>
+                                                <!-- <td>{{ $user->phone }}</td> -->
+                                                <!-- <td>
                                                     @if (!empty($user->getRoleNames()))
                                                     @foreach ($user->getRoleNames() as $v)
                                                         <label class="badge badge-success">{{ $v }}</label>
                                                     @endforeach
                                                     @endif
-                                                </td>
+                                                </td> -->
                                                 <td>
                                                     <a data-toggle="modal"  data-target="#print">
                                                         <button type="button" class="btn btn-icon btn-info mr-1" wire:click="print({{ $user->id }})" >
@@ -107,13 +98,13 @@
                                                         </button>
                                                     </a>
                                                   
-                                                    @can('property-edit')
+                                                    <!-- @can('property-edit')
                                                     <a class="btn btn-sm bg-success-light" wire:click="edit({{ $user->id }})">
                                                         <button type="button" class="btn btn-icon btn-success mr-1">
                                                             <i class="la la-edit"></i>
                                                         </button>
                                                     </a>
-                                                    @endcan
+                                                    @endcan -->
                                                     @can('property-delete')
                                                     <a data-toggle="modal" data-target="#delete">
                                                         <button type="button" class="btn btn-icon btn-danger mr-1" wire:click="gitIdForDelete({{ $user->id }})">

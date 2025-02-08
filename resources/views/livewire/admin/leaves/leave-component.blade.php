@@ -18,7 +18,7 @@
                 <div class="col-md-12 col-12">
                     <div class="dropdown float-md-right">
                         <!-- <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a> -->
-                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة وحدة</button>
+                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة اجازه</button>
                     </div>
                 </div>
                 @endcan
@@ -99,9 +99,10 @@
                                     <thead>
                                         <tr>
                                             <th>الموظف</th>
-                                            <th>النوع</th>
-                                            <th>البداية</th>
-                                            <th>النهاية</th>
+                                            <th>نوع الاجازة</th>
+                                            <th>من تاريخ</th>
+                                            <th>إلى تاريخ</th>
+                                           
                                             <th>الحالة</th>
                                         </tr>
                                     </thead>

@@ -20,7 +20,7 @@ class CreateSalariesTable extends Migration
             $table->decimal('base_salary', 10, 2); // الراتب الاساسي
             $table->decimal('deductions', 10, 2)->default(0); // الخصومات
             $table->decimal('bonuses', 10, 2)->default(0); // المكافآت
-            
+            // $table->decimal('net_salary', 10, 2)->default(0); // الاجمالي
             $table->date('payment_date')->nullable(); // تاريخ الدفع
             $table->timestamps();
         });

@@ -50,7 +50,7 @@
                                             @error('user_id')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <!-- <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5"> النوع </label>
                                             <select id="projectinput5" wire:model="type" name="status" class="form-control">
@@ -62,7 +62,7 @@
                                             </select>
                                             @error('deductions')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1"> تاريخ البداية </label>
@@ -78,13 +78,13 @@
                                             @error('end_date')<span  class="error-message">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="contractType">الوقت</label>
                                             <input type="text" wire:model="time" id="contractType" class="form-control">
                                             @error('time') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="projectinput1">السبب</label>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="form-actions">
                                 <button type="button" class="btn btn-warning mr-1" wire:click="closeCreateOredit()">
-                                    <i class="ft-x"></i> Cancel
+                                    <i class="ft-x"></i> قفل
                                 </button>
                                 <input type="submit" class="btn btn-primary" wire:click.prevent="store()" value="حفظ" />
                                 
