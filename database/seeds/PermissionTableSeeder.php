@@ -66,6 +66,37 @@ class PermissionTableSeeder extends Seeder
             'cleans-print',
 
             'reports',
+
+            'employees-list',
+            'employees-create',
+            'employees-edit',
+            'employees-delete',
+            'employees-print',
+
+            'leaves-list',
+            'leaves-create',
+            'leaves-edit',
+            'leaves-delete',
+
+            'user-permission-list',
+            'user-permission-create',
+            'user-permission-edit',
+            'user-permission-delete',
+
+            'salaries-list',
+            'salaries-create',
+            'salaries-edit',
+            'salaries-delete',
+
+            'user-contracts-list',
+            'user-contracts-create',
+            'user-contracts-edit',
+            'user-contracts-delete',
+
+            'attendances-list',
+            'attendances-create',
+            'attendances-edit',
+            'attendances-delete',
 		];
 		foreach ($permissions as $permission) {
 			Permission::firstOrCreate(['name' => $permission]);
