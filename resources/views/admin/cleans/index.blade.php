@@ -55,7 +55,9 @@
                                 @foreach ($cleans as $clean)
                                 <tr>
                                     <td>{{$clean->properties->number}}</td>
-                                    <td>{{$clean->clients->id}}</td>
+                                    <td> @if($clean->clients)
+                                            {{$clean->clients->id}}</td>
+                                        @endif</td>
                                     <td> 
                                         @if($clean->bathroom==1)
                                             ✓
