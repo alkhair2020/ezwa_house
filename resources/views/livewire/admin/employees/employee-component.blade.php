@@ -21,7 +21,7 @@
                 <div class="col-md-12 col-12">
                     <div class="dropdown float-md-right">
                         <!-- <a wire:click="create()"  class="btn btn-primary float-right mb-2">اضافة وحدة</a> -->
-                        <!-- <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة وحدة</button> -->
+                        <button type="button" wire:click="create()" class="btn btn-primary btn-min-width  mb-1 float-right">اضافة موظف</button>
                     </div>
                 </div>
                 @endcan
@@ -98,13 +98,13 @@
                                                         </button>
                                                     </a>
                                                   
-                                                    <!-- @can('property-edit')
+                                                    @can('property-edit')
                                                     <a class="btn btn-sm bg-success-light" wire:click="edit({{ $user->id }})">
                                                         <button type="button" class="btn btn-icon btn-success mr-1">
                                                             <i class="la la-edit"></i>
                                                         </button>
                                                     </a>
-                                                    @endcan -->
+                                                    @endcan
                                                     @can('property-delete')
                                                     <a data-toggle="modal" data-target="#delete">
                                                         <button type="button" class="btn btn-icon btn-danger mr-1" wire:click="gitIdForDelete({{ $user->id }})">

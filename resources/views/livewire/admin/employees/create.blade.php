@@ -38,51 +38,95 @@
                         <div class="form-body">
                             <h4 class="form-section"><i class="ft-user"></i>  </h4>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="projectinput5"> الموظف </label>
-                                        <select id="projectinput5 " wire:model="user_id" name="status" class="form-control select2">
-                                            <option value="" selected="" >اختر الموظف</option>
-                                            @foreach ($users as $user)
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('user_id')<span  class="error-message">{{ $message }}</span>@enderror
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1">  الاسم </label>
+                                            <input type="text" name="name" id="projectinput1" class="form-control" placeholder="الاسم" name="name" wire:model="name" >
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="projectinput1">  التاريخ </label>
-                                        <input type="date" name="date" id="projectinput1" class="form-control"
-                                            placeholder="التاريخ" name="fname" wire:model="date" >
-                                            @error('date')<span  class="error-message">{{ $message }}</span>@enderror
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1">  اليريد الالكتروني </label>
+                                            <input type="text" name="email" id="projectinput1" class="form-control" placeholder=" اليريد الالكتروني " name="fname" wire:model="email" >
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="projectinput5">حالة الموظف </label>
-                                        <select id="projectinput5" wire:model="status" name="status" class="form-control">
-                                            <option value="" selected="" >اختر الحالة</option>
-                                            <option value="Present"  {{ $status == 'Present' ? "selected" : "" }}>حاضر</option>
-                                            <option value="Absent"  {{ $status == 'Absent' ? "selected" : "" }}>غائب </option>
-                                            <option value="Late" {{ $status == 'Late' ? "selected" : "" }}> متأخر </option>
-                                        </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> كلمة المرور </label>
+                                            <input type="text" name="password" id="projectinput1" class="form-control" placeholder=" كلمة المرور " name="fname" wire:model="password" >
+                                        </div>
                                     </div>
-                                </div> -->
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="projectinput1"> وقت تسجيل الدخول </label>
-                                        <input type="time" name="date" id="projectinput1" class="form-control"
-                                            placeholder=" وقت تسجيل الدخول " name="fname" wire:model="check_in" >
+                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> رقم الجوال </label>
+                                            <input type="text" name="phone" id="projectinput1" class="form-control"
+                                                placeholder=" رقم الجوال " name="fname" wire:model="phone" >
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="projectinput1"> وقت تسجيل الخروج  </label>
-                                        <input type="time" name="date" id="projectinput1" class="form-control"
-                                            placeholder="وقت تسجيل الخروج " name="fname" wire:model="check_out" >
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> العنوان </label>
+                                            <input type="text" name="address" id="projectinput1" class="form-control"
+                                                placeholder=" العنوان " name="fname" wire:model="address" >
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> الجنسية </label>
+                                            <input type="text" name="nationality" id="projectinput1" class="form-control"
+                                                placeholder=" الجنسية " name="fname" wire:model="nationality" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> الحالة الاجتماعية </label>
+                                            <input type="text" name="date" id="projectinput1" class="form-control"
+                                                placeholder="  الحالة الاجتماعية  " name="fname" wire:model="marital_status" >
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> المؤهل العلمي </label>
+                                            <input type="text" name="date" id="projectinput1" class="form-control"
+                                                placeholder=" المؤهل العلمي " name="fname" wire:model="qualification" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> نوع الهوية </label>
+                                            <!-- <input type="text" name="date" id="projectinput1" class="form-control"
+                                                placeholder="  نوع الهوية  " name="fname" wire:model="document_type" > -->
+                                                <select name="document_type" class="form-control" id="typeId">
+                                                    <option value="" selected="" disabled="">اختر نوع الهوية</option>
+                                                    <option value="national identity" {{ $document_type == 'national identity' ? "selected" : "" }}>هوية وطنية</option>
+                                                    <option value="accommodation" {{ $document_type == 'accommodation' ? "selected" : "" }}>إقامة</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> رقم الهوية </label>
+                                            <input type="number"  id="projectinput1" class="form-control"
+                                                placeholder=" رقم الهوية  " name="fname" wire:model="identity_number" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> تاريخ الإصدار  </label>
+                                            <input type="date" name="date" id="projectinput1" class="form-control"
+                                                placeholder="  تاريخ الإصدار  " name="fname" wire:model="document_issue_date" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1"> تاريخ الانتهاء </label>
+                                            <input type="date" name="date" id="projectinput1" class="form-control"
+                                                placeholder=" تاريخ الانتهاء  " name="fname" wire:model="document_expiry" >
+                                        </div>
+                                    </div>
+                                   
                             </div>
                            
                         </div>

@@ -101,5 +101,6 @@ class PermissionTableSeeder extends Seeder
 		foreach ($permissions as $permission) {
 			Permission::firstOrCreate(['name' => $permission]);
 		}
+        // php artisan db:seed --class=PermissionTableSeeder
 	}
 }
