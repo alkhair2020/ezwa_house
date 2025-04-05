@@ -5737,6 +5737,22 @@ button.close {
   }
 }
 
+@media (min-width: 992px) {
+  .modal-middle {
+
+    max-width: 64%;
+    margin-right: 18%;
+    margin-left: 18%;
+  }
+}
+@media (min-width: 992px) {
+  .modal-client {
+    max-width: 46%;
+    margin-right: 27%;
+    margin-left: 27%;
+  }
+}
+
 .tooltip {
   position : absolute;
   z-index : 1070;
